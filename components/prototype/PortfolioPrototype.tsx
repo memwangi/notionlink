@@ -3,29 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-type ProjectPanel =
-  | {
-      type: "spread";
-      eyebrow: string;
-      title: string;
-      body: string[];
-      imageLabel: string;
-      imageColor: string;
-      meta: Array<{ label: string; value: string }>;
-    }
-  | {
-      type: "image";
-      eyebrow: string;
-      caption: string;
-      imageLabel: string;
-      imageColor: string;
-    }
-  | {
-      type: "text";
-      eyebrow: string;
-      title: string;
-      body: string[];
-    };
+type ProjectDetail = {
+  title: string;
+  body: string;
+  color?: string;
+  label: string;
+};
 
 type Project = {
   id: string;
@@ -34,9 +17,8 @@ type Project = {
   description: string;
   year: string;
   role: string;
-  previewColor: string;
-  previewLabel: string;
-  panels: ProjectPanel[];
+  color: string;
+  details: ProjectDetail[];
 };
 
 const projects: Project[] = [
@@ -44,50 +26,28 @@ const projects: Project[] = [
     id: "sable-house",
     title: "Sable House",
     company: "Private commission",
-    description: "Editorial portfolio concept for a private residence launch.",
+    description: "A residential launch shaped as a calm editorial experience.",
     year: "2026",
     role: "Art direction, digital experience",
-    previewColor: "oklch(80% 0.06 57)",
-    previewLabel: "Hero image placeholder",
-    panels: [
+    color: "oklch(81% 0.05 60)",
+    details: [
       {
-        type: "spread",
-        eyebrow: "Opening spread",
-        title: "A quiet first impression with room to breathe.",
-        body: [
-          "The first panel behaves like a cover spread: metadata on the left, one generous visual in the center, and a short framing text on the right.",
-          "It should feel like entering a project without leaving the larger portfolio index.",
-        ],
-        imageLabel: "Primary project visual",
-        imageColor: "oklch(81% 0.05 60)",
-        meta: [
-          { label: "Client", value: "Private commission" },
-          { label: "Type", value: "Residential brand site" },
-          { label: "Status", value: "Prototype" },
-        ],
+        label: "Facade study",
+        title: "First impression",
+        body: "The opening gives the residence space before asking the visitor to read. Quiet image rhythm, exact metadata, and short copy carry the page.",
+        color: "oklch(81% 0.05 60)",
       },
       {
-        type: "image",
-        eyebrow: "Visual beat",
-        caption: "A full-width image panel gives the project a cinematic pause before more narrative appears.",
-        imageLabel: "Wide image placeholder",
-        imageColor: "oklch(72% 0.06 95)",
+        label: "Sequence note",
+        title: "Reading pace",
+        body: "Longer notes are broken into deliberate beats so the project feels guided, not exported.",
+        color: "oklch(74% 0.06 95)",
       },
       {
-        type: "text",
-        eyebrow: "Narrative beat",
-        title: "Text panels slow the pace and turn the project into a guided case study.",
-        body: [
-          "This is where process, design choices, constraints, or outcomes can live without collapsing the whole project into one long article.",
-          "The sideways motion makes the reading feel deliberate rather than dumped into a scrolling wall of content.",
-        ],
-      },
-      {
-        type: "image",
-        eyebrow: "Detail beat",
-        caption: "A second image can hold mockups, photography, sketches, or a UI close-up.",
-        imageLabel: "Detail image placeholder",
-        imageColor: "oklch(70% 0.06 215)",
+        label: "Material crop",
+        title: "Texture before copy",
+        body: "The supporting visuals can hold surfaces, thresholds, and small details that make the residence feel specific.",
+        color: "oklch(70% 0.04 38)",
       },
     ],
   },
@@ -98,40 +58,25 @@ const projects: Project[] = [
     description: "Identity and product story for a sensing platform.",
     year: "2025",
     role: "Brand system, interface direction",
-    previewColor: "oklch(72% 0.07 215)",
-    previewLabel: "Preview image placeholder",
-    panels: [
+    color: "oklch(74% 0.07 214)",
+    details: [
       {
-        type: "spread",
-        eyebrow: "Opening spread",
-        title: "The project opens inside the stack instead of leaving the page.",
-        body: [
-          "This keeps vertical browsing intact. One click expands the row, but the overall page remains a portfolio index.",
-          "That balance is what makes the interaction feel authored instead of gimmicky.",
-        ],
-        imageLabel: "Primary project visual",
-        imageColor: "oklch(74% 0.07 214)",
-        meta: [
-          { label: "Client", value: "Afterlight Systems" },
-          { label: "Type", value: "B2B product launch" },
-          { label: "Status", value: "Concept" },
-        ],
+        label: "Signal map",
+        title: "System frame",
+        body: "The brand language makes a complex sensing platform feel measured and legible without turning it into a generic software page.",
+        color: "oklch(74% 0.07 214)",
       },
       {
-        type: "text",
-        eyebrow: "System note",
-        title: "Vertical scroll is for breadth. Horizontal scroll is for depth.",
-        body: [
-          "That directional split gives users a simple mental model: keep moving down to browse projects, move sideways to understand one project deeply.",
-          "It is legible interaction design because the directions mean different things.",
-        ],
+        label: "Interface frame",
+        title: "Interface direction",
+        body: "Product screens, diagrams, and launch copy share one visual tempo: restrained, technical, and clear.",
+        color: "oklch(76% 0.05 150)",
       },
       {
-        type: "image",
-        eyebrow: "Proof point",
-        caption: "This panel could become a grid of screens, a motion storyboard, or a prototype frame.",
-        imageLabel: "System panel placeholder",
-        imageColor: "oklch(76% 0.05 150)",
+        label: "Launch field",
+        title: "Product story",
+        body: "The case study can move from atmosphere to interface proof without forcing every detail into the first view.",
+        color: "oklch(69% 0.055 252)",
       },
     ],
   },
@@ -142,225 +87,198 @@ const projects: Project[] = [
     description: "A portfolio publication designed as a web narrative.",
     year: "2024",
     role: "Editorial design, motion concept",
-    previewColor: "oklch(78% 0.04 18)",
-    previewLabel: "Preview image placeholder",
-    panels: [
+    color: "oklch(78% 0.04 18)",
+    details: [
       {
-        type: "spread",
-        eyebrow: "Opening spread",
-        title: "A project can alternate between visual immersion and editorial explanation.",
-        body: [
-          "This makes the expanded state feel less like a card and more like a sequence of spreads in a publication.",
-          "That is a better match for a design portfolio than a dashboard-style detail view.",
-        ],
-        imageLabel: "Primary project visual",
-        imageColor: "oklch(78% 0.04 18)",
-        meta: [
-          { label: "Client", value: "Self-initiated" },
-          { label: "Type", value: "Publication system" },
-          { label: "Status", value: "Built" },
-        ],
+        label: "Cover spread",
+        title: "Publication logic",
+        body: "The project tests how case studies can behave like a sequence of spreads while staying readable on the web.",
+        color: "oklch(78% 0.04 18)",
       },
       {
-        type: "image",
-        eyebrow: "Sequence beat",
-        caption: "A colored rectangle stands in for a future image, but the interaction structure is already testable.",
-        imageLabel: "Publication image placeholder",
-        imageColor: "oklch(74% 0.05 320)",
+        label: "Pacing test",
+        title: "Prototype value",
+        body: "The structure isolates what matters first: opening, reading, pacing, and returning to the index.",
+        color: "oklch(74% 0.05 320)",
       },
       {
-        type: "text",
-        eyebrow: "Reading note",
-        title: "Prototype first. Real content later.",
-        body: [
-          "This prototype is useful because it isolates the behavior: opening, closing, horizontal reading, and the transition back to vertical browsing.",
-          "Once the structure feels right, the dummy panels can be replaced with real project data and media.",
-        ],
+        label: "Archive page",
+        title: "Narrative system",
+        body: "A small set of repeatable spreads lets the publication grow without turning the portfolio into a template.",
+        color: "oklch(72% 0.045 42)",
       },
     ],
   },
 ];
 
-function classNames(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
-}
+const headerBlocks = [
+  { left: "5%", top: "0%", width: "4%", height: "18%" },
+  { left: "0%", top: "36%", width: "5%", height: "7%" },
+  { left: "15%", top: "43%", width: "5%", height: "6%" },
+  { left: "27%", top: "16%", width: "5%", height: "8%" },
+  { left: "34%", top: "34%", width: "5%", height: "7%" },
+  { left: "39%", top: "28%", width: "5%", height: "8%" },
+  { left: "46%", top: "25%", width: "4%", height: "15%" },
+  { left: "46%", top: "56%", width: "5%", height: "7%" },
+  { left: "51%", top: "60%", width: "4%", height: "8%" },
+  { left: "22%", top: "73%", width: "5%", height: "7%" },
+  { left: "33%", top: "86%", width: "4%", height: "13%" },
+  { left: "61%", top: "85%", width: "5%", height: "7%" },
+  { left: "67%", top: "90%", width: "5%", height: "6%" },
+  { left: "75%", top: "12%", width: "5%", height: "7%" },
+  { left: "84%", top: "13%", width: "5%", height: "7%" },
+  { left: "75%", top: "28%", width: "5%", height: "7%" },
+  { left: "88%", top: "34%", width: "5%", height: "11%" },
+  { left: "93%", top: "26%", width: "6%", height: "8%" },
+  { left: "80%", top: "73%", width: "5%", height: "7%" },
+  { left: "92%", top: "88%", width: "6%", height: "9%" },
+];
 
-function DummyImage({
+function WorkImage({
   color,
-  label,
-  className,
+  title,
+  className = "",
 }: {
   color: string;
-  label: string;
+  title: string;
   className?: string;
 }) {
   return (
     <div
-      aria-label={label}
+      aria-label={`${title} preview`}
       role="img"
-      className={classNames(
-        "relative overflow-hidden rounded-sm border border-hairline",
-        className,
-      )}
+      className={`relative overflow-hidden rounded-sm border border-hairline ${className}`}
       style={{ backgroundColor: color }}
     >
-      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/25 px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/88">
-        <span>{label}</span>
-        <span>Dummy</span>
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-[12%] top-[18%] h-px bg-background/55"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-[18%] left-[12%] h-px w-[44%] bg-background/45"
+      />
+    </div>
+  );
+}
+
+function FlipCard({
+  detail,
+  index,
+  projectTitle,
+  isFlipped,
+  onFlip,
+}: {
+  detail: ProjectDetail;
+  index: number;
+  projectTitle: string;
+  isFlipped: boolean;
+  onFlip: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={isFlipped}
+      aria-label={`${isFlipped ? "Show image for" : "Read note for"} ${detail.label}`}
+      onClick={onFlip}
+      className="group/card w-[min(78vw,30rem)] shrink-0 snap-center text-left focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:w-[30rem]"
+    >
+      <span className="relative block aspect-[4/5] rounded-sm transition-transform duration-300 ease-out group-hover/card:-translate-y-0.5">
+        {isFlipped ? (
+          <span className="absolute inset-0 flex flex-col justify-between rounded-sm border border-[#CA4D0B] bg-[#FBFAF7] p-6 text-[#28231F] md:p-8">
+            <span className="space-y-4">
+              <span className="block text-[0.8125rem] font-medium leading-6 text-[#706A62]">
+                {projectTitle}
+              </span>
+              <span className="block max-w-[12ch] text-balance text-[clamp(1.75rem,3vw,2.625rem)] font-semibold leading-[0.98]">
+                {detail.title}
+              </span>
+            </span>
+            <span className="block max-w-[31ch] text-[1rem] leading-7 text-[#706A62]">
+              {detail.body}
+            </span>
+          </span>
+        ) : (
+          <span
+            className="absolute inset-0 overflow-hidden rounded-sm border border-[#FBFAF7]/25"
+            style={{ backgroundColor: detail.color }}
+          >
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-[10%] top-[14%] h-px bg-background/55"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute bottom-[15%] left-[10%] h-px w-[46%] bg-background/45"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute right-[12%] top-[24%] h-[38%] w-px bg-background/40"
+            />
+            <span className="absolute inset-x-4 bottom-4 flex items-center justify-between border-t border-background/35 pt-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-background/90">
+              <span>{detail.label}</span>
+              <span className="tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+            </span>
+          </span>
+        )}
+      </span>
+    </button>
+  );
+}
+
+function HeaderSpread() {
+  return (
+    <div className="min-h-screen w-full flex-1 overflow-hidden bg-[#192649]">
+      <div className="relative h-full min-h-screen overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-1/2 w-[10%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#070807]/45 to-transparent"
+        />
+
+        {headerBlocks.map((block) => (
+          <span
+            key={`${block.left}-${block.top}`}
+            aria-hidden="true"
+            className="absolute bg-[#CA4D0B]"
+            style={block}
+          />
+        ))}
+
+        <div className="absolute inset-x-6 top-1/2 z-10 max-w-[24rem] -translate-y-1/2 bg-[#192649]/90 px-6 py-7 text-center text-[#E7E2D8] sm:left-[48%] sm:right-auto sm:max-w-[32rem] sm:px-8 sm:py-8 sm:text-left md:left-[54%] lg:max-w-[36rem] lg:px-10 lg:py-10">
+          <Link
+            href="/"
+            className="block text-[clamp(3.75rem,16vw,5.5rem)] font-bold leading-[0.84] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.75rem,6vw,5.5rem)]"
+          >
+            Joseph Mugo
+          </Link>
+          <p className="mx-auto mt-5 max-w-[25ch] text-[clamp(1.05rem,4vw,1.3rem)] font-medium leading-7 text-[#C9C4BB] sm:mx-0 sm:text-[clamp(1rem,1.6vw,1.25rem)]">
+            Interfaces, identities, and stories for{" "}
+            <span className="text-[#CA4D0B]">curious</span> minds
+          </p>
+          <nav className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[0.95rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:justify-start">
+            <a href="#work" className="transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+              Work
+            </a>
+            <a href="mailto:hello@example.com" className="transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+              Contact
+            </a>
+            <a href="#essays" className="transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+              Essays
+            </a>
+          </nav>
+        </div>
       </div>
     </div>
   );
 }
 
-function ProjectPanelView({ panel }: { panel: ProjectPanel }) {
-  if (panel.type === "spread") {
-    return (
-      <article className="grid w-[min(72vw,62rem)] shrink-0 snap-start grid-cols-1 gap-6 rounded-sm border border-hairline bg-background p-5 md:grid-cols-[13rem_minmax(0,1fr)_16rem] md:p-6">
-        <div className="space-y-6">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-            {panel.eyebrow}
-          </p>
-          <div className="space-y-4">
-            {panel.meta.map((item) => (
-              <div key={item.label} className="space-y-1">
-                <p className="text-[0.72rem] font-medium uppercase tracking-[0.18em] text-subtle">
-                  {item.label}
-                </p>
-                <p className="text-sm leading-6 text-foreground">{item.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <DummyImage
-          color={panel.imageColor}
-          label={panel.imageLabel}
-          className="h-[clamp(18rem,44vh,28rem)]"
-        />
-
-        <div className="flex max-w-[28ch] flex-col justify-between gap-5">
-          <div className="space-y-4">
-            <h2 className="text-[clamp(1.35rem,2.5vw,2.4rem)] font-semibold leading-[1.02] text-foreground">
-              {panel.title}
-            </h2>
-            <div className="space-y-4 text-[1.05rem] leading-8 text-muted">
-              {panel.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </article>
-    );
-  }
-
-  if (panel.type === "image") {
-    return (
-      <article className="w-[min(70vw,56rem)] shrink-0 snap-start space-y-4 rounded-sm border border-hairline bg-background p-5 md:p-6">
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-            {panel.eyebrow}
-          </p>
-          <p className="text-sm leading-6 text-subtle">Scroll sideways for the next beat</p>
-        </div>
-        <DummyImage
-          color={panel.imageColor}
-          label={panel.imageLabel}
-          className="h-[clamp(17rem,42vh,26rem)]"
-        />
-        <p className="max-w-[46ch] text-[1rem] leading-7 text-muted">{panel.caption}</p>
-      </article>
-    );
-  }
-
-  return (
-    <article className="flex h-[clamp(18rem,44vh,26rem)] w-[min(56vw,30rem)] shrink-0 snap-start flex-col justify-between gap-8 rounded-sm border border-hairline bg-surface p-6 md:p-8">
-      <div className="space-y-4">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-          {panel.eyebrow}
-        </p>
-        <h2 className="max-w-[16ch] text-[clamp(1.5rem,2.6vw,2.5rem)] font-semibold leading-[1.03] text-foreground">
-          {panel.title}
-        </h2>
-      </div>
-      <div className="space-y-4 text-[1.04rem] leading-8 text-muted">
-        {panel.body.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
-    </article>
-  );
-}
-
-function OpeningHeroPanel({
-  color,
-  label,
-}: {
-  color: string;
-  label: string;
-}) {
-  return (
-    <article className="w-[min(74vw,60rem)] shrink-0 snap-start space-y-4 rounded-sm border border-hairline bg-background p-5 md:p-6">
-      <div className="flex items-center justify-between gap-4">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-          Opening image
-        </p>
-        <p className="text-sm leading-6 text-subtle">The clicked preview expands into the rail.</p>
-      </div>
-      <DummyImage
-        color={color}
-        label={label}
-        className="h-[clamp(19rem,48vh,30rem)]"
-      />
-    </article>
-  );
-}
-
-function OpeningTextPanel({
-  eyebrow,
-  title,
-  body,
-}: {
-  eyebrow: string;
-  title: string;
-  body: string[];
-}) {
-  return (
-    <article className="flex h-[clamp(18rem,44vh,25rem)] w-[min(52vw,28rem)] shrink-0 snap-start flex-col justify-between gap-8 rounded-sm border border-hairline bg-surface p-6 md:p-8">
-      <div className="space-y-4">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-          {eyebrow}
-        </p>
-        <h3 className="max-w-[15ch] text-[clamp(1.45rem,2.5vw,2.65rem)] font-semibold leading-[1.03] text-foreground">
-          {title}
-        </h3>
-      </div>
-      <div className="space-y-4 text-[1.04rem] leading-8 text-muted">
-        {body.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
-    </article>
-  );
-}
-
 export function PortfolioPrototype() {
-  const [openId, setOpenId] = useState<string>("");
-  const [railProgress, setRailProgress] = useState(0);
+  const [openId, setOpenId] = useState<string>(projects[0].id);
+  const [flippedCardId, setFlippedCardId] = useState<string>("");
   const projectRefs = useRef<Record<string, HTMLElement | null>>({});
-  const railRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
-    if (!openId) {
-      return;
-    }
-
     const projectElement = projectRefs.current[openId];
-    const railElement = railRefs.current[openId];
-
-    if (railElement) {
-      railElement.scrollTo({ left: 0, behavior: "smooth" });
-    }
 
     if (!projectElement) {
       return;
@@ -369,178 +287,120 @@ export function PortfolioPrototype() {
     requestAnimationFrame(() => {
       projectElement.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "nearest",
       });
     });
   }, [openId]);
 
-  function handleRailScroll(projectId: string) {
-    if (projectId !== openId) {
-      return;
-    }
-
-    const rail = railRefs.current[projectId];
-
-    if (!rail) {
-      return;
-    }
-
-    const nextProgress = Math.min(rail.scrollLeft / 320, 1);
-    setRailProgress(nextProgress);
-  }
-
   return (
-    <main className="mx-auto w-full max-w-[96rem] px-6 py-10 sm:px-10 lg:px-12 lg:py-16">
-      <header className="mx-auto mb-16 flex max-w-[52rem] items-end justify-between gap-8">
-        <div className="space-y-4">
-          <Link
-            href="/"
-            className="font-[family:var(--font-signature)] text-[clamp(1.5rem,3vw,2.75rem)] leading-none text-foreground transition-colors hover:text-accent focus-visible:outline-2"
-          >
-            Joseph Mugo
-          </Link>
-          <div className="max-w-[46ch] space-y-3">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-              Prototype 01
-            </p>
-            <p className="text-[1.05rem] leading-8 text-muted">
-              A vertical portfolio index with inline horizontal case-study rails.
-              Open one project, read sideways, then keep moving down the stack.
-            </p>
+    <main className="w-full">
+      <header className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
+          <div className="flex flex-1">
+            <HeaderSpread />
           </div>
         </div>
-
-        <p className="hidden max-w-[18ch] text-right text-sm leading-6 text-subtle lg:block">
-          Testing interaction first with dummy content and color fields in place of future project imagery.
-        </p>
       </header>
 
-      <section className="space-y-6">
+      <section
+        id="work"
+        className="mx-auto w-full max-w-[78rem] space-y-3 px-6 py-14 sm:px-10 lg:py-20"
+        aria-label="Selected work"
+      >
         {projects.map((project, index) => {
           const isOpen = openId === project.id;
-          const openingPanel =
-            project.panels[0]?.type === "spread" ? project.panels[0] : null;
-          const railPanels = openingPanel ? project.panels.slice(1) : project.panels;
 
           return (
-            <section
+            <article
               key={project.id}
               ref={(element) => {
                 projectRefs.current[project.id] = element;
               }}
-              className="border-t border-hairline pt-6 first:border-t-0 first:pt-0"
-              style={{ scrollMarginBlock: "16vh" }}
+              className="border-b border-hairline py-8 last:border-b-0"
             >
               {isOpen ? (
-                <div className="relative mx-auto grid w-full max-w-[80rem] animate-[dock-in_420ms_cubic-bezier(0.22,1,0.36,1)] grid-cols-1 items-center gap-6 px-2 pb-6 pt-1 md:grid-cols-[minmax(0,13rem)_minmax(0,1fr)] md:gap-8 md:px-6">
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-6 top-6 -z-10 hidden h-[78%] rounded-[2rem] bg-foreground/4 blur-3xl md:block"
-                    style={{
-                      opacity: 0.2 + (1 - railProgress) * 0.35,
-                      transform: `scale(${1 - railProgress * 0.02})`,
-                    }}
-                  />
+                <div className="rounded-sm bg-[#192649] px-5 py-6 text-[#FBFAF7] animate-[dock-in_360ms_cubic-bezier(0.22,1,0.36,1)] sm:px-7 md:px-8 md:py-8">
+                  <div className="mb-8 grid gap-5 md:grid-cols-[4rem_minmax(0,1fr)_auto] md:items-start">
+                    <p className="border-t border-[#CA4D0B] pt-3 text-sm font-medium leading-6 tabular-nums text-[#DAD5CA]">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
 
-                  <div
-                    className="space-y-4 text-center md:text-right"
-                    style={{
-                      opacity: 1 - railProgress * 0.24,
-                      transform: `translateY(${railProgress * 6}px) scale(${1 - railProgress * 0.08})`,
-                      transformOrigin: "center right",
-                    }}
-                  >
-                    <div className="flex items-center justify-center gap-3 md:justify-end">
-                      <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-                        {index + 1 < 10 ? `0${index + 1}` : index + 1}
-                      </span>
-                      <span className="h-px w-20 bg-hairline" />
-                    </div>
-                    <div className="space-y-2">
-                      <h2 className="text-[clamp(1.3rem,2vw,2.2rem)] font-semibold leading-[1.03] text-foreground">
+                    <div className="max-w-[46rem] space-y-4">
+                      <h2 className="max-w-[12ch] text-balance text-[clamp(2.5rem,7vw,6.2rem)] font-medium leading-[0.86] text-[#FBFAF7]">
                         {project.title}
                       </h2>
-                      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.16em] text-subtle">
-                        {project.company}
+                      <p className="max-w-[42ch] text-[1.08rem] leading-8 text-[#DAD5CA]">
+                        {project.description}
                       </p>
+                      <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-[#BEB7AA]">
+                        <span>{project.company}</span>
+                        <span>{project.year}</span>
+                        <span>{project.role}</span>
+                        <span>{project.details.length} frames</span>
+                      </div>
                     </div>
-                    <div className="space-y-3 text-sm leading-6 text-muted">
-                      <p>{project.year}</p>
-                      <p>{project.role}</p>
-                      <p className="text-foreground">{project.description}</p>
-                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOpenId("");
+                        setFlippedCardId("");
+                      }}
+                      className="justify-self-start border-t border-[#CA4D0B] pt-3 text-[0.8125rem] font-medium leading-6 text-[#DAD5CA] transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:justify-self-end"
+                    >
+                      Close
+                    </button>
                   </div>
 
                   <div
-                    className="space-y-3"
-                    style={{
-                      transform: `translateY(${railProgress * 4}px)`,
-                    }}
+                    className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 pr-[24vw] md:ml-16 [scrollbar-color:#CA4D0B_transparent] [scrollbar-width:thin]"
+                    aria-label={`${project.title} picture notes`}
                   >
-                    <div
-                      className="flex items-center justify-between gap-4"
-                      id={`${project.id}-rail`}
-                    >
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-                        Project rail
-                      </p>
-                      <p className="text-sm leading-6 text-subtle">
-                        Scroll sideways to follow the project. Scroll down to continue browsing.
-                      </p>
-                    </div>
+                    {project.details.map((detail, detailIndex) => {
+                      const cardId = `${project.id}-${detailIndex}`;
 
-                    <div
-                      className="flex snap-x snap-mandatory items-start gap-6 overflow-x-auto pb-2 pl-1 pr-[26vw] scroll-smooth [scrollbar-color:var(--hairline)_transparent] [scrollbar-width:thin]"
-                      tabIndex={0}
-                      aria-label={`${project.title} horizontal case study rail`}
-                      ref={(element) => {
-                        railRefs.current[project.id] = element;
-                      }}
-                      onScroll={() => handleRailScroll(project.id)}
-                    >
-                      <OpeningHeroPanel
-                        color={project.previewColor}
-                        label={project.previewLabel}
-                      />
-
-                      {openingPanel ? (
-                        <OpeningTextPanel
-                          eyebrow={openingPanel.eyebrow}
-                          title={openingPanel.title}
-                          body={openingPanel.body}
+                      return (
+                        <FlipCard
+                          key={cardId}
+                          detail={detail}
+                          index={detailIndex}
+                          projectTitle={project.title}
+                          isFlipped={flippedCardId === cardId}
+                          onFlip={() => {
+                            setFlippedCardId(flippedCardId === cardId ? "" : cardId);
+                          }}
                         />
-                      ) : null}
-
-                      {railPanels.map((panel, panelIndex) => (
-                        <ProjectPanelView
-                          key={`${project.id}-${panel.type}-${panelIndex + 1}`}
-                          panel={panel}
-                        />
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
                 </div>
               ) : (
-                <div className="mx-auto grid w-full max-w-[56rem] grid-cols-1 items-center gap-8 pb-6 md:grid-cols-[minmax(0,17rem)_minmax(0,28rem)] md:justify-center md:gap-10">
-                  <div className="order-2 space-y-3 text-center md:order-1 md:text-right">
-                    <div className="flex items-center gap-3 md:justify-end">
-                      <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-                        {index + 1 < 10 ? `0${index + 1}` : index + 1}
-                      </span>
-                      <span className="h-px w-24 bg-hairline" />
-                    </div>
-                    <div className="space-y-2">
-                      <h2 className="text-[clamp(1.25rem,2.2vw,2.35rem)] font-semibold leading-[1.03] text-foreground">
+                <div className="grid gap-6 md:grid-cols-[4rem_minmax(0,1fr)_minmax(14rem,22rem)] md:items-start">
+                  <p className="text-sm font-medium leading-6 tabular-nums text-subtle">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+
+                  <div className="max-w-[42rem] space-y-4">
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={() => {
+                        setOpenId(project.id);
+                        setFlippedCardId("");
+                      }}
+                      className="block text-left focus-visible:outline-2"
+                    >
+                      <h2 className="max-w-[12ch] text-balance text-[clamp(2.1rem,5vw,4.5rem)] font-medium leading-[0.92] text-foreground">
                         {project.title}
                       </h2>
-                      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.16em] text-subtle">
-                        {project.company}
-                      </p>
-                      <p className="mx-auto max-w-[30ch] text-[1rem] leading-7 text-muted md:ml-auto md:mr-0">
-                        {project.description}
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm leading-6 text-subtle md:justify-end">
+                    </button>
+
+                    <p className="max-w-[40ch] text-[1.0625rem] leading-8 text-muted">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
+                      <span>{project.company}</span>
                       <span>{project.year}</span>
                       <span>{project.role}</span>
                     </div>
@@ -548,29 +408,23 @@ export function PortfolioPrototype() {
 
                   <button
                     type="button"
-                    aria-expanded={false}
-                    aria-controls={`${project.id}-rail`}
+                    aria-expanded={isOpen}
                     aria-label={`Expand ${project.title}`}
                     onClick={() => {
-                      setRailProgress(0);
                       setOpenId(project.id);
+                      setFlippedCardId("");
                     }}
-                    className="group/image order-1 block text-left md:order-2"
+                    className="group/image text-left focus-visible:outline-2"
                   >
-                    <DummyImage
-                      color={project.previewColor}
-                      label={project.previewLabel}
-                      className="mx-auto min-h-[15rem] w-full max-w-[28rem] transition-all duration-300 group-hover/image:-translate-y-0.5 md:min-h-[16rem]"
+                    <WorkImage
+                      color={project.color}
+                      title={project.title}
+                      className="aspect-[4/3] w-full transition-transform duration-300 group-hover/image:-translate-y-0.5"
                     />
-                    <div className="mt-3 flex items-center justify-between text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-subtle">
-                      <span>Click image to expand</span>
-                      <span>+</span>
-                    </div>
                   </button>
                 </div>
               )}
-
-            </section>
+            </article>
           );
         })}
       </section>

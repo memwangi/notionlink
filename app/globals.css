@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(98.8% 0.003 95);
-  --foreground: oklch(18% 0.012 80);
-  --muted: oklch(45% 0.018 78);
-  --subtle: oklch(66% 0.014 82);
-  --hairline: oklch(88% 0.01 84);
-  --surface: oklch(96.5% 0.006 92);
-  --accent: oklch(34% 0.055 60);
+  --background: #fbfaf7;
+  --foreground: #28231f;
+  --muted: #706a62;
+  --subtle: #a7a29a;
+  --hairline: #dedad3;
+  --surface: #f4f2ed;
+  --accent: #ca4d0b;
+  --primary: #192649;
 }
 
 @theme inline {
@@ -18,7 +19,8 @@
   --color-hairline: var(--hairline);
   --color-surface: var(--surface);
   --color-accent: var(--accent);
-  --font-sans: var(--font-hanken-grotesk), "Arial", "Helvetica Neue", sans-serif;
+  --color-primary: var(--primary);
+  --font-sans: var(--font-plus-jakarta-sans), "Arial", "Helvetica Neue", sans-serif;
   --font-mono: "Courier New", Courier, monospace;
 }
 
@@ -26,7 +28,7 @@ html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-hanken-grotesk), "Arial", "Helvetica Neue", sans-serif;
+  font-family: var(--font-plus-jakarta-sans), "Arial", "Helvetica Neue", sans-serif;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
 }
@@ -58,5 +60,16 @@ input {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

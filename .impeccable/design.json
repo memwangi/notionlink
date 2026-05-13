@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-13T00:00:00.000Z",
+  "title": "Design System: Joseph Mugo Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary-navy": {
+        "role": "primary",
+        "displayName": "Deep Curiosity Navy",
+        "canonical": "#192649",
+        "tonalRamp": [
+          "oklch(18% 0.07 265)",
+          "oklch(28% 0.07 265)",
+          "oklch(38% 0.07 265)",
+          "oklch(48% 0.06 265)",
+          "oklch(60% 0.045 265)",
+          "oklch(72% 0.03 265)",
+          "oklch(84% 0.018 265)",
+          "oklch(94% 0.008 265)"
+        ]
+      },
+      "ember-accent": {
+        "role": "secondary",
+        "displayName": "Burnt Ember",
+        "canonical": "#CA4D0B",
+        "tonalRamp": [
+          "oklch(20% 0.08 45)",
+          "oklch(32% 0.12 45)",
+          "oklch(44% 0.16 45)",
+          "oklch(56% 0.18 45)",
+          "oklch(66% 0.14 45)",
+          "oklch(76% 0.09 45)",
+          "oklch(86% 0.05 45)",
+          "oklch(95% 0.02 45)"
+        ]
+      },
+      "paper-background": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#FBFAF7",
+        "tonalRamp": [
+          "oklch(18% 0.003 95)",
+          "oklch(30% 0.003 95)",
+          "oklch(44% 0.003 95)",
+          "oklch(58% 0.003 95)",
+          "oklch(72% 0.003 95)",
+          "oklch(84% 0.003 95)",
+          "oklch(92% 0.003 95)",
+          "oklch(98.8% 0.003 95)"
+        ]
+      },
+      "ink-foreground": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#28231F",
+        "tonalRamp": [
+          "oklch(18% 0.012 80)",
+          "oklch(30% 0.012 80)",
+          "oklch(42% 0.012 80)",
+          "oklch(54% 0.01 80)",
+          "oklch(66% 0.008 80)",
+          "oklch(78% 0.006 80)",
+          "oklch(88% 0.004 80)",
+          "oklch(96% 0.002 80)"
+        ]
+      },
+      "quiet-muted": {
+        "role": "neutral",
+        "displayName": "Quiet Taupe",
+        "canonical": "#706A62",
+        "tonalRamp": [
+          "oklch(18% 0.018 78)",
+          "oklch(28% 0.018 78)",
+          "oklch(38% 0.018 78)",
+          "oklch(48% 0.016 78)",
+          "oklch(60% 0.012 78)",
+          "oklch(72% 0.009 78)",
+          "oklch(84% 0.006 78)",
+          "oklch(94% 0.003 78)"
+        ]
+      },
+      "soft-subtle": {
+        "role": "neutral",
+        "displayName": "Distant Stone",
+        "canonical": "#A7A29A",
+        "tonalRamp": [
+          "oklch(20% 0.014 82)",
+          "oklch(32% 0.014 82)",
+          "oklch(44% 0.014 82)",
+          "oklch(56% 0.014 82)",
+          "oklch(66% 0.014 82)",
+          "oklch(76% 0.01 82)",
+          "oklch(86% 0.006 82)",
+          "oklch(95% 0.003 82)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Fine Hairline",
+        "canonical": "#DEDAD3",
+        "tonalRamp": [
+          "oklch(20% 0.01 84)",
+          "oklch(32% 0.01 84)",
+          "oklch(44% 0.01 84)",
+          "oklch(56% 0.01 84)",
+          "oklch(68% 0.01 84)",
+          "oklch(78% 0.01 84)",
+          "oklch(88% 0.01 84)",
+          "oklch(96% 0.004 84)"
+        ]
+      },
+      "raised-surface": {
+        "role": "neutral",
+        "displayName": "Raised Paper",
+        "canonical": "#F4F2ED",
+        "tonalRamp": [
+          "oklch(18% 0.006 92)",
+          "oklch(30% 0.006 92)",
+          "oklch(44% 0.006 92)",
+          "oklch(58% 0.006 92)",
+          "oklch(72% 0.006 92)",
+          "oklch(84% 0.006 92)",
+          "oklch(92% 0.006 92)",
+          "oklch(96.5% 0.006 92)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Signature Display",
+        "purpose": "Site name and rare signature moments."
+      },
+      "headline": {
+        "displayName": "Project Headline",
+        "purpose": "Project titles and expanded project headers."
+      },
+      "title": {
+        "displayName": "Picture Note Title",
+        "purpose": "Title text on flipped picture-note cards."
+      },
+      "body": {
+        "displayName": "Portfolio Body",
+        "purpose": "Project descriptions and long-form reading."
+      },
+      "label": {
+        "displayName": "Quiet Label",
+        "purpose": "Metadata, frame counts, and interface controls."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "dock-in",
+        "value": "360ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Reserved for project expansion entering the page flow."
+      },
+      {
+        "name": "card-hover-lift",
+        "value": "300ms ease-out translateY(-0.125rem)",
+        "purpose": "Small response for picture cards and project images."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text Button",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Quiet text control used for Close and low-emphasis interface actions.",
+      "html": "<button class=\"ds-text-button\">Close</button>",
+      "css": ".ds-text-button { color: #A7A29A; background: transparent; border: 0; padding: 0; border-radius: 4px; font: 500 0.8125rem/1.5 'Plus Jakarta Sans', Arial, sans-serif; transition: color 180ms ease-out; } .ds-text-button:hover { color: #28231F; } .ds-text-button:focus-visible { outline: 2px solid #CA4D0B; outline-offset: 4px; }"
+    },
+    {
+      "name": "Picture Note Card",
+      "kind": "card",
+      "refersTo": "picture-card",
+      "description": "Horizontal deck card that swaps between a picture face and a note face.",
+      "html": "<button class=\"ds-picture-card\"><span class=\"ds-picture-card-title\">First impression</span><span class=\"ds-picture-card-body\">Quiet image rhythm, exact metadata, and short copy carry the page.</span></button>",
+      "css": ".ds-picture-card { width: min(78vw, 30rem); aspect-ratio: 4 / 5; display: flex; flex-direction: column; justify-content: space-between; text-align: left; background: #F4F2ED; color: #28231F; border: 1px solid #DEDAD3; border-radius: 4px; padding: 24px; transition: transform 300ms ease-out; } .ds-picture-card:hover { transform: translateY(-2px); } .ds-picture-card:focus-visible { outline: 2px solid #CA4D0B; outline-offset: 4px; } .ds-picture-card-title { max-width: 12ch; font: 600 clamp(1.75rem, 3vw, 2.625rem)/0.98 'Plus Jakarta Sans', Arial, sans-serif; } .ds-picture-card-body { max-width: 31ch; color: #706A62; font: 400 1rem/1.75 'Plus Jakarta Sans', Arial, sans-serif; }"
+    },
+    {
+      "name": "Project Row",
+      "kind": "custom",
+      "refersTo": "project-row",
+      "description": "Index row for selected work before a project opens into the horizontal deck.",
+      "html": "<article class=\"ds-project-row\"><span class=\"ds-index\">01</span><div><h2>Sable House</h2><p>A residential launch shaped as a calm editorial experience.</p></div></article>",
+      "css": ".ds-project-row { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: 24px; padding: 32px 0; border-bottom: 1px solid #DEDAD3; background: #FBFAF7; color: #28231F; } .ds-index { color: #A7A29A; font: 500 0.875rem/1.5 'Plus Jakarta Sans', Arial, sans-serif; font-variant-numeric: tabular-nums; } .ds-project-row h2 { max-width: 12ch; margin: 0; font: 600 clamp(2.1rem, 5vw, 4.5rem)/0.92 'Plus Jakarta Sans', Arial, sans-serif; text-wrap: balance; } .ds-project-row p { max-width: 40ch; margin: 16px 0 0; color: #706A62; font: 400 1.0625rem/1.75 'Plus Jakarta Sans', Arial, sans-serif; }"
+    },
+    {
+      "name": "Signature Navigation",
+      "kind": "nav",
+      "refersTo": "button-text",
+      "description": "Site-name home link, treated as identity more than navigation chrome.",
+      "html": "<a class=\"ds-signature-nav\" href=\"/\">Joseph Mugo</a>",
+      "css": ".ds-signature-nav { display: inline-block; max-width: 9ch; color: #28231F; text-decoration: none; font: 400 clamp(2.75rem, 8vw, 7rem)/0.88 Marcellus, Georgia, serif; transition: color 180ms ease-out; } .ds-signature-nav:hover { color: #CA4D0B; } .ds-signature-nav:focus-visible { outline: 2px solid #CA4D0B; outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Ember Index",
+    "overview": "This portfolio should feel like a still room with one precise ember of color. The experience is calm, respectful, and inviting, but not timid. It gives a curious mind enough restraint to read and enough strangeness to remember who made it.\n\nThe system is an editorial brand surface, not an app shell. Typography, measure, and pacing carry the first impression. The portfolio should reject generic SaaS portfolio patterns, flashy gimmicks, noisy card grids, over-explained prototype copy, heavy decorative chrome, and raw Notion export behavior.",
+    "keyCharacteristics": [
+      "Quiet white-base atmosphere with rare, deliberate color.",
+      "Large, tight display type paired with restrained body text.",
+      "Flat surfaces, fine rules, and measured spacing instead of shadow drama.",
+      "Project interactions that invite curiosity without shouting instructions.",
+      "Picture-card moments that can carry hidden notes behind the image."
+    ],
+    "rules": [
+      {
+        "name": "The Rare Ember Rule",
+        "body": "Burnt Ember must stay rare. If it appears everywhere, the system becomes noisy and loses the daring quality.",
+        "section": "colors"
+      },
+      {
+        "name": "The White Base Rule",
+        "body": "Warm Paper remains the default atmosphere. Do not drench the portfolio in dark navy unless a specific campaign section earns that shift.",
+        "section": "colors"
+      },
+      {
+        "name": "The Measure Rule",
+        "body": "Headlines may be narrow and dramatic; body copy may not. Any paragraph longer than 66ch is too wide for this portfolio.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Default Label Rule",
+        "body": "Labels are small, calm, and specific. Avoid repeated uppercase tracked labels unless the label is doing real work.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-Still Rule",
+        "body": "No ambient card shadows at rest. If a surface needs hierarchy, use spacing, scale, border, or tonal contrast first.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Deep Curiosity Navy and Burnt Ember as brand anchors, not as decoration.",
+      "Do keep the interface calm, respectful, inviting, and a bit daring.",
+      "Do let large type, line length, and spacing create hierarchy before adding visual chrome.",
+      "Do keep project opening, closing, horizontal browsing, and picture-note reading keyboard accessible.",
+      "Do respect reduced-motion preferences when adding animation beyond simple state changes."
+    ],
+    "donts": [
+      "Don't use generic SaaS portfolio patterns.",
+      "Don't use flashy gimmicks.",
+      "Don't build noisy card grids.",
+      "Don't add over-explained prototype copy.",
+      "Don't add heavy decorative chrome.",
+      "Don't make the interface feel like a raw Notion export.",
+      "Don't turn Burnt Ember into a repeated badge, stripe, or loud CTA color across every section."
+    ]
+  }
+}

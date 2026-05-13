@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Marcellus } from "next/font/google";
+import { Marcellus, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken-grotesk",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${marcellus.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${marcellus.variable} h-full antialiased`}
     >
-      <body className={`${hankenGrotesk.className} min-h-full flex flex-col`}>
+      <body className={`${plusJakartaSans.className} min-h-full flex flex-col`}>
         {children}
       </body>
     </html>
