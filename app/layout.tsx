@@ -18,7 +18,7 @@ const marcellus = Marcellus({
 export const metadata: Metadata = {
   title: "Financial Systems Design Portfolio",
   description:
-    "A portfolio focused on trust, money movement, regulated workflows, operational clarity, and digital ecosystem design.",
+    "A portfolio about trust, money movement, regulated workflows, internal tools, and connected financial services.",
 };
 
 export default function RootLayout({

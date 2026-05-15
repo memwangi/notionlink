@@ -27,27 +27,27 @@ const projects: Project[] = [
     title: "Designing for Trust",
     company: "Banking systems",
     description:
-      "Trust is created by accuracy, verification, clear consequences, and visible controls.",
+      "People trust financial tools when every step is clear, checked, and easy to prove.",
     year: "Problem area",
     role: "Verification, approvals, auditability",
     color: "oklch(81% 0.05 60)",
     details: [
       {
         label: "Confirmations",
-        title: "Review before submit",
-        body: "Payment confirmations and release documents should make the irreversible parts explicit: recipient, amount, account, reference, timing, fees, and what happens after approval.",
+        title: "Check before sending",
+        body: "Before a user submits, the screen should clearly show the recipient, amount, account, reference, fees, timing, and what will happen next.",
         color: "oklch(81% 0.05 60)",
       },
       {
         label: "Verification",
-        title: "Proof at the point of action",
-        body: "QR verification, receipts, download flows, and status labels help users prove that a transaction, release, or approval is real without leaving the workflow.",
+        title: "Proof where it matters",
+        body: "QR checks, receipts, downloads, and status labels help people prove that a payment, release, or approval is real.",
         color: "oklch(74% 0.06 95)",
       },
       {
         label: "Controls",
-        title: "Visible responsibility",
-        body: "Maker-checker approvals, audit trails, role-based visibility, and success or failure states show who can act, who already acted, and what still needs attention.",
+        title: "Show who did what",
+        body: "Approvals, audit trails, roles, and success or failure states show who can act, who already acted, and what still needs attention.",
         color: "oklch(70% 0.04 38)",
       },
     ],
@@ -57,7 +57,7 @@ const projects: Project[] = [
     title: "Moving Money Clearly",
     company: "Payments and transfers",
     description:
-      "Money movement needs interfaces that make state, cost, destination, and timing impossible to misread.",
+      "Payment tools should make the amount, cost, destination, timing, and status easy to understand.",
     year: "Problem area",
     role: "Payment flows, status systems, receipts",
     color: "oklch(74% 0.07 214)",
@@ -65,19 +65,19 @@ const projects: Project[] = [
       {
         label: "Payment state",
         title: "Where the money is",
-        body: "Pending, processing, released, reversed, failed, and settled states need distinct language and visual treatment so users can understand progress without support tickets.",
+        body: "Pending, processing, released, reversed, failed, and settled states should be easy to tell apart at a glance.",
         color: "oklch(74% 0.07 214)",
       },
       {
         label: "Cost clarity",
-        title: "No hidden arithmetic",
-        body: "Fees, exchange rates, deductions, available balances, and ledger changes should be exposed before commitment, not explained after the fact.",
+        title: "No hidden math",
+        body: "Fees, exchange rates, deductions, balances, and ledger changes should be shown before a user confirms.",
         color: "oklch(76% 0.05 150)",
       },
       {
         label: "Receipts",
-        title: "Evidence that travels",
-        body: "A useful receipt is not decoration. It carries identifiers, parties, timestamps, QR proof, and downloadable formats that work across customers, banks, and operations teams.",
+        title: "Receipts people can use",
+        body: "A useful receipt shows IDs, parties, time, QR proof, and download options so customers, banks, and teams can all use it.",
         color: "oklch(69% 0.055 252)",
       },
     ],
@@ -87,27 +87,27 @@ const projects: Project[] = [
     title: "Making Operations Legible",
     company: "Internal tools",
     description:
-      "Operational systems should help teams see queues, exceptions, ownership, and next actions quickly.",
+      "Internal tools should help teams see work, problems, owners, and next steps quickly.",
     year: "Problem area",
     role: "Dashboards, workflows, exception handling",
     color: "oklch(78% 0.04 18)",
     details: [
       {
         label: "Queues",
-        title: "Work that can be scanned",
-        body: "Dashboards and lists need priority, aging, owner, risk, and status signals so teams can decide what to handle first without opening every record.",
+        title: "Work that is easy to scan",
+        body: "Dashboards and lists should show priority, age, owner, risk, and status so teams know what to handle first.",
         color: "oklch(78% 0.04 18)",
       },
       {
         label: "Exceptions",
-        title: "When the system needs help",
-        body: "Exceptions should explain what broke, what is blocked, what evidence is missing, and which role can resolve it.",
+        title: "When something is stuck",
+        body: "Error and exception screens should explain what broke, what is blocked, what is missing, and who can fix it.",
         color: "oklch(74% 0.05 320)",
       },
       {
         label: "Handoffs",
         title: "Clear ownership",
-        body: "Operational clarity depends on handoffs that preserve context: notes, documents, approvals, timestamps, and the reason a record moved from one team to another.",
+        body: "Handoffs should keep notes, documents, approvals, time stamps, and the reason work moved from one team to another.",
         color: "oklch(72% 0.045 42)",
       },
     ],
@@ -117,27 +117,27 @@ const projects: Project[] = [
     title: "Designing Regulated Workflows",
     company: "Compliance and risk",
     description:
-      "Regulated products need interfaces that make policy, evidence, permissions, and review steps usable.",
+      "Regulated tools should make rules, evidence, permissions, and reviews easier to follow.",
     year: "Problem area",
     role: "Compliance UX, permissions, evidence capture",
     color: "oklch(76% 0.05 150)",
     details: [
       {
         label: "Evidence",
-        title: "Capture without friction",
-        body: "Onboarding, KYC, release documents, and approvals work better when evidence is requested in context and stored with the decision it supports.",
+        title: "Ask at the right time",
+        body: "Onboarding, KYC, release documents, and approvals work better when the system asks for proof at the right moment.",
         color: "oklch(76% 0.05 150)",
       },
       {
         label: "Permissions",
-        title: "Access that explains itself",
-        body: "Role-based visibility should make restricted actions understandable: what is hidden, why it is unavailable, and who has authority to continue.",
+        title: "Explain access",
+        body: "When something is locked, the user should know what is hidden, why it is locked, and who can unlock it.",
         color: "oklch(71% 0.06 185)",
       },
       {
         label: "Review",
-        title: "Policy in the workflow",
-        body: "The best review flows turn policy into usable steps: checks, warnings, required fields, documents, and clear escalation paths.",
+        title: "Turn rules into steps",
+        body: "Good review flows turn policy into checks, warnings, required fields, documents, and clear next steps.",
         color: "oklch(69% 0.055 252)",
       },
     ],
@@ -147,27 +147,27 @@ const projects: Project[] = [
     title: "Connecting Digital Ecosystems",
     company: "Financial infrastructure",
     description:
-      "Banks increasingly operate as connective tissue between customers, goods, partners, ledgers, and services.",
+      "Banks now connect customers, goods, partners, ledgers, and services.",
     year: "Problem area",
     role: "Ecosystem design, service flows, integration logic",
     color: "oklch(74% 0.05 320)",
     details: [
       {
         label: "Partners",
-        title: "Shared context",
-        body: "When banks connect to merchants, logistics teams, warehouses, and customers, the interface has to carry shared identifiers and consistent status language.",
+        title: "Shared details",
+        body: "When banks connect to merchants, logistics teams, warehouses, and customers, every side needs the same IDs and status language.",
         color: "oklch(74% 0.05 320)",
       },
       {
         label: "Goods",
-        title: "Money tied to movement",
-        body: "Release flows connect payment, authorization, documents, and goods. The design has to show both financial state and operational readiness.",
+        title: "Money and goods together",
+        body: "Release flows connect payment, approval, documents, and goods. The design has to show both money status and goods status.",
         color: "oklch(80% 0.045 42)",
       },
       {
         label: "Systems",
-        title: "Interfaces as infrastructure",
-        body: "Good ecosystem design reduces ambiguity between systems: what changed, where it changed, who owns the next action, and what proof travels downstream.",
+        title: "Clear system handoffs",
+        body: "Good system design shows what changed, where it changed, who owns the next step, and what proof moves with it.",
         color: "oklch(70% 0.04 38)",
       },
     ],
@@ -409,9 +409,9 @@ function HeaderSpread() {
             I design financial systems that help money, goods, and trust move clearly.
           </Link>
           <p className="mx-auto mt-4 max-w-[42ch] text-balance text-[0.98rem] font-medium leading-7 text-[#D6D0C6] sm:mx-0 sm:mt-5 sm:text-[clamp(1rem,1.45vw,1.18rem)]">
-            My work focuses on the recurring problems inside banking and financial
-            infrastructure: trust, money movement, regulated workflows, operational
-            clarity, and digital ecosystem design.
+            My work focuses on common problems in banking and financial systems:
+            trust, money movement, regulated workflows, internal tools, and connected
+            services.
           </p>
           <nav className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-[0.86rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:mt-7 sm:justify-start sm:text-[0.9rem]">
             <a href="#work" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
@@ -477,8 +477,8 @@ export function PortfolioPrototype() {
               Problem areas, not just project cards.
             </h1>
             <p className="max-w-[46ch] text-[1.08rem] leading-8 text-muted">
-              Each section shows a recurring systems problem in financial infrastructure
-              and the interface patterns that make it easier to operate.
+              Each section shows a common problem in financial systems and the design
+              patterns that make it easier to use.
             </p>
           </div>
         </div>
