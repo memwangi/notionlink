@@ -23,108 +23,155 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: "sable-house",
-    title: "Sable House",
-    company: "Private commission",
-    description: "A residential launch shaped as a calm editorial experience.",
-    year: "2026",
-    role: "Art direction, digital experience",
+    id: "designing-for-trust",
+    title: "Designing for Trust",
+    company: "Banking systems",
+    description:
+      "Trust is created by accuracy, verification, clear consequences, and visible controls.",
+    year: "Problem area",
+    role: "Verification, approvals, auditability",
     color: "oklch(81% 0.05 60)",
     details: [
       {
-        label: "Facade study",
-        title: "First impression",
-        body: "The opening gives the residence space before asking the visitor to read. Quiet image rhythm, exact metadata, and short copy carry the page.",
+        label: "Confirmations",
+        title: "Review before submit",
+        body: "Payment confirmations and release documents should make the irreversible parts explicit: recipient, amount, account, reference, timing, fees, and what happens after approval.",
         color: "oklch(81% 0.05 60)",
       },
       {
-        label: "Sequence note",
-        title: "Reading pace",
-        body: "Longer notes are broken into deliberate beats so the project feels guided, not exported.",
+        label: "Verification",
+        title: "Proof at the point of action",
+        body: "QR verification, receipts, download flows, and status labels help users prove that a transaction, release, or approval is real without leaving the workflow.",
         color: "oklch(74% 0.06 95)",
       },
       {
-        label: "Material crop",
-        title: "Texture before copy",
-        body: "The supporting visuals can hold surfaces, thresholds, and small details that make the residence feel specific.",
+        label: "Controls",
+        title: "Visible responsibility",
+        body: "Maker-checker approvals, audit trails, role-based visibility, and success or failure states show who can act, who already acted, and what still needs attention.",
         color: "oklch(70% 0.04 38)",
       },
     ],
   },
   {
-    id: "afterlight",
-    title: "Afterlight Systems",
-    company: "Afterlight Systems",
-    description: "Identity and product story for a sensing platform.",
-    year: "2025",
-    role: "Brand system, interface direction",
+    id: "moving-money-clearly",
+    title: "Moving Money Clearly",
+    company: "Payments and transfers",
+    description:
+      "Money movement needs interfaces that make state, cost, destination, and timing impossible to misread.",
+    year: "Problem area",
+    role: "Payment flows, status systems, receipts",
     color: "oklch(74% 0.07 214)",
     details: [
       {
-        label: "Signal map",
-        title: "System frame",
-        body: "The brand language makes a complex sensing platform feel measured and legible without turning it into a generic software page.",
+        label: "Payment state",
+        title: "Where the money is",
+        body: "Pending, processing, released, reversed, failed, and settled states need distinct language and visual treatment so users can understand progress without support tickets.",
         color: "oklch(74% 0.07 214)",
       },
       {
-        label: "Interface frame",
-        title: "Interface direction",
-        body: "Product screens, diagrams, and launch copy share one visual tempo: restrained, technical, and clear.",
+        label: "Cost clarity",
+        title: "No hidden arithmetic",
+        body: "Fees, exchange rates, deductions, available balances, and ledger changes should be exposed before commitment, not explained after the fact.",
         color: "oklch(76% 0.05 150)",
       },
       {
-        label: "Launch field",
-        title: "Product story",
-        body: "The case study can move from atmosphere to interface proof without forcing every detail into the first view.",
+        label: "Receipts",
+        title: "Evidence that travels",
+        body: "A useful receipt is not decoration. It carries identifiers, parties, timestamps, QR proof, and downloadable formats that work across customers, banks, and operations teams.",
         color: "oklch(69% 0.055 252)",
       },
     ],
   },
   {
-    id: "monograph",
-    title: "Monograph 03",
-    company: "Self-initiated",
-    description: "A portfolio publication designed as a web narrative.",
-    year: "2024",
-    role: "Editorial design, motion concept",
+    id: "operational-clarity",
+    title: "Making Operations Legible",
+    company: "Internal tools",
+    description:
+      "Operational systems should help teams see queues, exceptions, ownership, and next actions quickly.",
+    year: "Problem area",
+    role: "Dashboards, workflows, exception handling",
     color: "oklch(78% 0.04 18)",
     details: [
       {
-        label: "Cover spread",
-        title: "Publication logic",
-        body: "The project tests how case studies can behave like a sequence of spreads while staying readable on the web.",
+        label: "Queues",
+        title: "Work that can be scanned",
+        body: "Dashboards and lists need priority, aging, owner, risk, and status signals so teams can decide what to handle first without opening every record.",
         color: "oklch(78% 0.04 18)",
       },
       {
-        label: "Pacing test",
-        title: "Prototype value",
-        body: "The structure isolates what matters first: opening, reading, pacing, and returning to the index.",
+        label: "Exceptions",
+        title: "When the system needs help",
+        body: "Exceptions should explain what broke, what is blocked, what evidence is missing, and which role can resolve it.",
         color: "oklch(74% 0.05 320)",
       },
       {
-        label: "Archive page",
-        title: "Narrative system",
-        body: "A small set of repeatable spreads lets the publication grow without turning the portfolio into a template.",
+        label: "Handoffs",
+        title: "Clear ownership",
+        body: "Operational clarity depends on handoffs that preserve context: notes, documents, approvals, timestamps, and the reason a record moved from one team to another.",
         color: "oklch(72% 0.045 42)",
       },
     ],
   },
-];
-
-const headerBlocks = [
-  { left: "5%", top: "0%", width: "3.5%", height: "16%" },
-  { left: "0%", top: "37%", width: "4.5%", height: "6%" },
-  { left: "16%", top: "44%", width: "4.5%", height: "5.5%" },
-  { left: "29%", top: "17%", width: "4.5%", height: "7%" },
-  { left: "38%", top: "31%", width: "4.5%", height: "7%" },
-  { left: "47%", top: "57%", width: "4.5%", height: "6%" },
-  { left: "53%", top: "61%", width: "3.5%", height: "7%" },
-  { left: "24%", top: "73%", width: "4.5%", height: "6%" },
-  { left: "76%", top: "13%", width: "4.5%", height: "6%" },
-  { left: "86%", top: "13%", width: "4.5%", height: "6%" },
-  { left: "88%", top: "36%", width: "4.5%", height: "10%" },
-  { left: "81%", top: "74%", width: "4.5%", height: "6%" },
-  { left: "92%", top: "89%", width: "5%", height: "8%" },
+  {
+    id: "regulated-workflows",
+    title: "Designing Regulated Workflows",
+    company: "Compliance and risk",
+    description:
+      "Regulated products need interfaces that make policy, evidence, permissions, and review steps usable.",
+    year: "Problem area",
+    role: "Compliance UX, permissions, evidence capture",
+    color: "oklch(76% 0.05 150)",
+    details: [
+      {
+        label: "Evidence",
+        title: "Capture without friction",
+        body: "Onboarding, KYC, release documents, and approvals work better when evidence is requested in context and stored with the decision it supports.",
+        color: "oklch(76% 0.05 150)",
+      },
+      {
+        label: "Permissions",
+        title: "Access that explains itself",
+        body: "Role-based visibility should make restricted actions understandable: what is hidden, why it is unavailable, and who has authority to continue.",
+        color: "oklch(71% 0.06 185)",
+      },
+      {
+        label: "Review",
+        title: "Policy in the workflow",
+        body: "The best review flows turn policy into usable steps: checks, warnings, required fields, documents, and clear escalation paths.",
+        color: "oklch(69% 0.055 252)",
+      },
+    ],
+  },
+  {
+    id: "digital-ecosystems",
+    title: "Connecting Digital Ecosystems",
+    company: "Financial infrastructure",
+    description:
+      "Banks increasingly operate as connective tissue between customers, goods, partners, ledgers, and services.",
+    year: "Problem area",
+    role: "Ecosystem design, service flows, integration logic",
+    color: "oklch(74% 0.05 320)",
+    details: [
+      {
+        label: "Partners",
+        title: "Shared context",
+        body: "When banks connect to merchants, logistics teams, warehouses, and customers, the interface has to carry shared identifiers and consistent status language.",
+        color: "oklch(74% 0.05 320)",
+      },
+      {
+        label: "Goods",
+        title: "Money tied to movement",
+        body: "Release flows connect payment, authorization, documents, and goods. The design has to show both financial state and operational readiness.",
+        color: "oklch(80% 0.045 42)",
+      },
+      {
+        label: "Systems",
+        title: "Interfaces as infrastructure",
+        body: "Good ecosystem design reduces ambiguity between systems: what changed, where it changed, who owns the next action, and what proof travels downstream.",
+        color: "oklch(70% 0.04 38)",
+      },
+    ],
+  },
 ];
 
 function WorkImage({
@@ -152,6 +199,87 @@ function WorkImage({
         className="absolute bottom-[18%] left-[12%] h-px w-[44%] bg-background/45"
       />
     </div>
+  );
+}
+
+function StockChartBackdrop() {
+  const candles = [
+    { x: 9, high: 68, low: 84, open: 72, close: 80 },
+    { x: 16, high: 58, low: 77, open: 64, close: 73 },
+    { x: 23, high: 61, low: 81, open: 77, close: 67 },
+    { x: 30, high: 50, low: 72, open: 67, close: 56 },
+    { x: 37, high: 46, low: 68, open: 51, close: 62 },
+    { x: 44, high: 38, low: 60, open: 56, close: 43 },
+    { x: 51, high: 33, low: 57, open: 40, close: 52 },
+    { x: 58, high: 27, low: 49, open: 45, close: 32 },
+    { x: 65, high: 29, low: 55, open: 34, close: 48 },
+    { x: 72, high: 20, low: 44, open: 42, close: 26 },
+    { x: 79, high: 18, low: 41, open: 24, close: 37 },
+    { x: 86, high: 12, low: 34, open: 32, close: 18 },
+    { x: 93, high: 9, low: 29, open: 16, close: 24 },
+  ];
+
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      className="absolute inset-0 h-full w-full"
+    >
+      <defs>
+        <linearGradient id="stock-fill" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#CA4D0B" stopOpacity="0.34" />
+          <stop offset="72%" stopColor="#CA4D0B" stopOpacity="0.04" />
+        </linearGradient>
+      </defs>
+
+      <path
+        d="M0 22H100M0 38H100M0 54H100M0 70H100M14 0V100M28 0V100M42 0V100M56 0V100M70 0V100M84 0V100"
+        className="stroke-[#FBFAF7]/[0.08]"
+        strokeWidth="0.16"
+        vectorEffect="non-scaling-stroke"
+      />
+      <path
+        d="M0 78 C8 72 12 76 19 66 S32 55 41 57 S52 35 61 39 S73 25 83 28 S93 12 100 16 L100 100 L0 100 Z"
+        fill="url(#stock-fill)"
+      />
+      <path
+        d="M0 78 C8 72 12 76 19 66 S32 55 41 57 S52 35 61 39 S73 25 83 28 S93 12 100 16"
+        fill="none"
+        className="stroke-[#CA4D0B]"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="0.9"
+        vectorEffect="non-scaling-stroke"
+      />
+
+      {candles.map((candle) => {
+        const isUp = candle.close < candle.open;
+        const top = Math.min(candle.open, candle.close);
+        const height = Math.abs(candle.close - candle.open);
+
+        return (
+          <g key={candle.x} className={isUp ? "text-[#CA4D0B]" : "text-[#E7E2D8]/55"}>
+            <line
+              x1={candle.x}
+              x2={candle.x}
+              y1={candle.high}
+              y2={candle.low}
+              stroke="currentColor"
+              strokeWidth="0.45"
+              vectorEffect="non-scaling-stroke"
+            />
+            <rect
+              x={candle.x - 1.4}
+              y={top}
+              width="2.8"
+              height={Math.max(height, 2)}
+              fill="currentColor"
+            />
+          </g>
+        );
+      })}
+    </svg>
   );
 }
 
@@ -218,20 +346,20 @@ function FlipCard({
       aria-pressed={isFlipped}
       aria-label={`${isFlipped ? "Show image for" : "Read note for"} ${detail.label}`}
       onClick={onFlip}
-      className="group/card w-[min(78vw,30rem)] shrink-0 snap-center text-left focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:w-[30rem]"
+      className="group/card w-[calc(100vw-3rem)] max-w-[46rem] shrink-0 snap-center scroll-mx-6 text-left focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:w-[calc(100vw-5rem)] md:w-[min(72vw,46rem)] md:scroll-mx-10 lg:w-[min(64vw,46rem)]"
     >
-      <span className="relative block aspect-[4/5] rounded-sm transition-transform duration-300 ease-out group-hover/card:-translate-y-0.5">
+      <span className="relative block min-h-[min(34rem,72vh)] rounded-sm transition-transform duration-300 ease-out group-hover/card:-translate-y-0.5 sm:min-h-[min(38rem,74vh)]">
         {isFlipped ? (
-          <span className="absolute inset-0 flex flex-col justify-between rounded-sm border border-[#CA4D0B] bg-[#FBFAF7] p-6 text-[#28231F] md:p-8">
+          <span className="absolute inset-0 flex flex-col justify-between rounded-sm border border-[#CA4D0B] bg-[#FBFAF7] p-6 text-[#28231F] md:p-10">
             <span className="space-y-4">
               <span className="block text-[0.8125rem] font-medium leading-6 text-[#706A62]">
                 {projectTitle}
               </span>
-              <span className="block max-w-[12ch] text-balance text-[clamp(1.75rem,3vw,2.625rem)] font-semibold leading-[0.98]">
+              <span className="block max-w-[13ch] text-balance text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98]">
                 {detail.title}
               </span>
             </span>
-            <span className="block max-w-[31ch] text-[1rem] leading-7 text-[#706A62]">
+            <span className="block max-w-[38ch] text-[1.05rem] leading-8 text-[#706A62]">
               {detail.body}
             </span>
           </span>
@@ -267,35 +395,28 @@ function HeaderSpread() {
   return (
     <div className="min-h-screen w-full flex-1 overflow-hidden bg-[#192649]">
       <div className="relative h-full min-h-screen overflow-hidden">
+        <StockChartBackdrop />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-1/2 w-[9%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#0D1632]/28 to-transparent"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(202,77,11,0.12),transparent_34%),linear-gradient(90deg,rgba(25,38,73,0.1),rgba(25,38,73,0.66))]"
         />
-
-        {headerBlocks.map((block) => (
-          <span
-            key={`${block.left}-${block.top}`}
-            aria-hidden="true"
-            className="absolute bg-[#CA4D0B]/70"
-            style={block}
-          />
-        ))}
 
         <div className="absolute inset-x-5 top-1/2 z-10 max-w-[24rem] -translate-y-1/2 bg-[#192649]/94 px-5 py-6 text-center text-[#E7E2D8] sm:inset-x-6 sm:left-[44%] sm:right-auto sm:max-w-[36rem] sm:px-8 sm:py-8 sm:text-left md:left-[48%] lg:max-w-[42rem] lg:px-10 lg:py-10">
           <Link
             href="/"
             className="block text-balance text-[clamp(2.15rem,10vw,3.55rem)] font-semibold leading-[0.95] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.6rem,4.7vw,4.65rem)] sm:leading-[0.92]"
           >
-            Designing the systems through which money, goods, and trust move.
+            I design financial systems that help money, goods, and trust move clearly.
           </Link>
-          <p className="mx-auto mt-4 max-w-[36ch] text-balance text-[0.98rem] font-medium leading-7 text-[#D6D0C6] sm:mx-0 sm:mt-5 sm:text-[clamp(1rem,1.45vw,1.18rem)]">
-            What happens when banks stop being places where money is stored, and start
-            becoming the infrastructure through which industries operate?
+          <p className="mx-auto mt-4 max-w-[42ch] text-balance text-[0.98rem] font-medium leading-7 text-[#D6D0C6] sm:mx-0 sm:mt-5 sm:text-[clamp(1rem,1.45vw,1.18rem)]">
+            My work focuses on the recurring problems inside banking and financial
+            infrastructure: trust, money movement, regulated workflows, operational
+            clarity, and digital ecosystem design.
           </p>
           <nav className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-[0.86rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:mt-7 sm:justify-start sm:text-[0.9rem]">
             <a href="#work" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
               <FilledCtaIcon type="work" />
-              Work
+              Areas
             </a>
             <a href="mailto:hello@example.com" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
               <FilledCtaIcon type="contact" />
@@ -345,8 +466,23 @@ export function PortfolioPrototype() {
       <section
         id="work"
         className="mx-auto w-full max-w-[78rem] space-y-3 px-6 py-14 sm:px-10 lg:py-20"
-        aria-label="Selected work"
+        aria-label="Problem areas"
       >
+        <div className="grid gap-5 border-b border-hairline pb-10 md:grid-cols-[4rem_minmax(0,1fr)]">
+          <p className="border-t border-[#CA4D0B] pt-3 text-sm font-medium leading-6 text-muted">
+            Focus
+          </p>
+          <div className="max-w-[48rem] space-y-4">
+            <h1 className="text-balance text-[clamp(2.2rem,5vw,4.6rem)] font-medium leading-[0.92] text-foreground">
+              Problem areas, not just project cards.
+            </h1>
+            <p className="max-w-[46ch] text-[1.08rem] leading-8 text-muted">
+              Each section shows a recurring systems problem in financial infrastructure
+              and the interface patterns that make it easier to operate.
+            </p>
+          </div>
+        </div>
+
         {projects.map((project, index) => {
           const isOpen = openId === project.id;
 
@@ -359,20 +495,20 @@ export function PortfolioPrototype() {
               className="border-b border-hairline py-8 last:border-b-0"
             >
               {isOpen ? (
-                <div className="rounded-sm bg-[#192649] px-5 py-6 text-[#FBFAF7] animate-[dock-in_360ms_cubic-bezier(0.22,1,0.36,1)] sm:px-7 md:px-8 md:py-8">
-                  <div className="mb-8 grid gap-5 md:grid-cols-[4rem_minmax(0,1fr)_auto] md:items-start">
-                    <p className="border-t border-[#CA4D0B] pt-3 text-sm font-medium leading-6 tabular-nums text-[#DAD5CA]">
+                <div className="animate-[dock-in_360ms_cubic-bezier(0.22,1,0.36,1)] py-2 sm:py-4">
+                  <div className="mb-10 grid gap-6 md:grid-cols-[4rem_minmax(0,1fr)_auto] md:items-start">
+                    <p className="border-t border-[#CA4D0B] pt-3 text-sm font-medium leading-6 tabular-nums text-muted">
                       {String(index + 1).padStart(2, "0")}
                     </p>
 
-                    <div className="max-w-[46rem] space-y-4">
-                      <h2 className="max-w-[12ch] text-balance text-[clamp(2.5rem,7vw,6.2rem)] font-medium leading-[0.86] text-[#FBFAF7]">
+                    <div className="max-w-[46rem] space-y-5">
+                      <h2 className="max-w-[16ch] text-balance text-[clamp(2.15rem,5vw,4.4rem)] font-medium leading-[0.9] text-foreground">
                         {project.title}
                       </h2>
-                      <p className="max-w-[42ch] text-[1.08rem] leading-8 text-[#DAD5CA]">
+                      <p className="max-w-[42ch] text-[1.08rem] leading-8 text-muted">
                         {project.description}
                       </p>
-                      <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-[#BEB7AA]">
+                      <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
                         <span>{project.company}</span>
                         <span>{project.year}</span>
                         <span>{project.role}</span>
@@ -386,7 +522,7 @@ export function PortfolioPrototype() {
                         setOpenId("");
                         setFlippedCardId("");
                       }}
-                      className="inline-flex items-center gap-2 justify-self-start border-t border-[#CA4D0B] pt-3 text-[0.8125rem] font-medium leading-6 text-[#DAD5CA] transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:justify-self-end"
+                      className="inline-flex items-center gap-2 justify-self-start border-t border-[#CA4D0B] pt-3 text-[0.8125rem] font-medium leading-6 text-muted transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:justify-self-end"
                     >
                       <FilledCtaIcon type="close" />
                       Close
@@ -394,7 +530,7 @@ export function PortfolioPrototype() {
                   </div>
 
                   <div
-                    className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 pr-[24vw] md:ml-16 [scrollbar-color:#CA4D0B_transparent] [scrollbar-width:thin]"
+                    className="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-5 sm:-mx-10 sm:px-10 md:ml-10 md:gap-8 md:pr-[calc(100vw-46rem)] [scrollbar-color:#CA4D0B_transparent] [scrollbar-width:thin]"
                     aria-label={`${project.title} picture notes`}
                   >
                     {project.details.map((detail, detailIndex) => {
