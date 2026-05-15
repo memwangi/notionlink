@@ -54,7 +54,7 @@ const projects: Project[] = [
   },
   {
     id: "moving-money-clearly",
-    title: "Moving Money Clearly",
+    title: "Designing for Money Movement",
     company: "Payments and transfers",
     description:
       "Payment tools should make the amount, cost, destination, timing, and status easy to understand.",
@@ -84,7 +84,7 @@ const projects: Project[] = [
   },
   {
     id: "operational-clarity",
-    title: "Making Operations Legible",
+    title: "Designing for Operational Clarity",
     company: "Internal tools",
     description:
       "Internal tools should help teams see work, problems, owners, and next steps quickly.",
@@ -144,7 +144,7 @@ const projects: Project[] = [
   },
   {
     id: "digital-ecosystems",
-    title: "Connecting Digital Ecosystems",
+    title: "Designing for Ecosystem Banking",
     company: "Financial infrastructure",
     description:
       "Banks now connect customers, goods, partners, ledgers, and services.",
@@ -169,6 +169,66 @@ const projects: Project[] = [
         title: "Clear system handoffs",
         body: "Good system design shows what changed, where it changed, who owns the next step, and what proof moves with it.",
         color: "oklch(70% 0.04 38)",
+      },
+    ],
+  },
+  {
+    id: "customer-onboarding",
+    title: "Designing for Customer Onboarding",
+    company: "Account opening",
+    description:
+      "Onboarding should help customers start clearly, give the right proof, and know what happens next.",
+    year: "Problem area",
+    role: "Account setup, KYC, first-use flows",
+    color: "oklch(74% 0.07 214)",
+    details: [
+      {
+        label: "Start",
+        title: "Set clear expectations",
+        body: "Customers should know what they need, how long it will take, what will be checked, and what they can do after setup.",
+        color: "oklch(74% 0.07 214)",
+      },
+      {
+        label: "Proof",
+        title: "Ask for proof clearly",
+        body: "KYC and document steps should explain why information is needed, what format works, and how to fix a rejected upload.",
+        color: "oklch(76% 0.05 150)",
+      },
+      {
+        label: "First use",
+        title: "Guide the first action",
+        body: "After approval, the product should guide customers to the first useful action, such as funding an account, making a payment, or setting limits.",
+        color: "oklch(69% 0.055 252)",
+      },
+    ],
+  },
+  {
+    id: "customer-financial-behavior",
+    title: "Designing for Customer Financial Behavior",
+    company: "Customer tools",
+    description:
+      "Customer-facing tools should help people understand choices, risks, habits, and next steps.",
+    year: "Problem area",
+    role: "Customer journeys, nudges, financial choices",
+    color: "oklch(82% 0.045 95)",
+    details: [
+      {
+        label: "Choices",
+        title: "Make tradeoffs clear",
+        body: "Customers make better choices when fees, limits, timing, risks, and benefits are shown in plain language before they act.",
+        color: "oklch(82% 0.045 95)",
+      },
+      {
+        label: "Habits",
+        title: "Support better routines",
+        body: "Savings, payments, borrowing, and account tools should help people build habits without hiding cost or risk.",
+        color: "oklch(78% 0.05 70)",
+      },
+      {
+        label: "Guidance",
+        title: "Show the next best step",
+        body: "Good financial tools guide customers with simple prompts, clear warnings, and useful next steps at the right time.",
+        color: "oklch(76% 0.05 150)",
       },
     ],
   },
@@ -416,15 +476,15 @@ function HeaderSpread() {
           <nav className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-[0.86rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:mt-7 sm:justify-start sm:text-[0.9rem]">
             <a href="#work" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
               <FilledCtaIcon type="work" />
-              Areas
+              See selected work
             </a>
             <a href="mailto:hello@example.com" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
               <FilledCtaIcon type="contact" />
-              Contact
+              Send me an email
             </a>
             <a href="#essays" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
               <FilledCtaIcon type="essays" />
-              Essays
+              Read my Substack
             </a>
           </nav>
         </div>
@@ -474,11 +534,10 @@ export function PortfolioPrototype() {
           </p>
           <div className="max-w-[48rem] space-y-4">
             <h1 className="text-balance text-[clamp(2.2rem,5vw,4.6rem)] font-medium leading-[0.92] text-foreground">
-              Problem areas, not just project cards.
+              Work
             </h1>
             <p className="max-w-[46ch] text-[1.08rem] leading-8 text-muted">
-              Each section shows a common problem in financial systems and the design
-              patterns that make it easier to use.
+              Here are the kinds of problems I&apos;ve solved in my recent work.
             </p>
           </div>
         </div>
