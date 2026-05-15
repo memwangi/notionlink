@@ -462,6 +462,9 @@ function HeaderSpread() {
         />
 
         <div className="absolute inset-x-5 top-1/2 z-10 max-w-[24rem] -translate-y-1/2 bg-[#192649]/94 px-5 py-6 text-center text-[#E7E2D8] sm:inset-x-6 sm:left-[44%] sm:right-auto sm:max-w-[36rem] sm:px-8 sm:py-8 sm:text-left md:left-[48%] lg:max-w-[42rem] lg:px-10 lg:py-10">
+          <p className="mb-4 text-[0.82rem] font-semibold uppercase leading-6 tracking-[0.14em] text-[#CA4D0B]">
+            Hi, I&apos;m Joseph.
+          </p>
           <Link
             href="/"
             className="block text-balance text-[clamp(2.15rem,10vw,3.55rem)] font-semibold leading-[0.95] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.6rem,4.7vw,4.65rem)] sm:leading-[0.92]"
