@@ -16,8 +16,8 @@ const marcellus = Marcellus({
 });
 
 export const metadata: Metadata = {
-  title: "Joseph Mugo",
-  description: "Design portfolio of Joseph Mugo.",
+  title: "Designing the systems through which money, goods, and trust move.",
+  description: "Design portfolio for systems through which money, goods, and trust move.",
 };
 
 export default function RootLayout({

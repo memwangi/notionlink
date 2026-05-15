@@ -112,26 +112,19 @@ const projects: Project[] = [
 ];
 
 const headerBlocks = [
-  { left: "5%", top: "0%", width: "4%", height: "18%" },
-  { left: "0%", top: "36%", width: "5%", height: "7%" },
-  { left: "15%", top: "43%", width: "5%", height: "6%" },
-  { left: "27%", top: "16%", width: "5%", height: "8%" },
-  { left: "34%", top: "34%", width: "5%", height: "7%" },
-  { left: "39%", top: "28%", width: "5%", height: "8%" },
-  { left: "46%", top: "25%", width: "4%", height: "15%" },
-  { left: "46%", top: "56%", width: "5%", height: "7%" },
-  { left: "51%", top: "60%", width: "4%", height: "8%" },
-  { left: "22%", top: "73%", width: "5%", height: "7%" },
-  { left: "33%", top: "86%", width: "4%", height: "13%" },
-  { left: "61%", top: "85%", width: "5%", height: "7%" },
-  { left: "67%", top: "90%", width: "5%", height: "6%" },
-  { left: "75%", top: "12%", width: "5%", height: "7%" },
-  { left: "84%", top: "13%", width: "5%", height: "7%" },
-  { left: "75%", top: "28%", width: "5%", height: "7%" },
-  { left: "88%", top: "34%", width: "5%", height: "11%" },
-  { left: "93%", top: "26%", width: "6%", height: "8%" },
-  { left: "80%", top: "73%", width: "5%", height: "7%" },
-  { left: "92%", top: "88%", width: "6%", height: "9%" },
+  { left: "5%", top: "0%", width: "3.5%", height: "16%" },
+  { left: "0%", top: "37%", width: "4.5%", height: "6%" },
+  { left: "16%", top: "44%", width: "4.5%", height: "5.5%" },
+  { left: "29%", top: "17%", width: "4.5%", height: "7%" },
+  { left: "38%", top: "31%", width: "4.5%", height: "7%" },
+  { left: "47%", top: "57%", width: "4.5%", height: "6%" },
+  { left: "53%", top: "61%", width: "3.5%", height: "7%" },
+  { left: "24%", top: "73%", width: "4.5%", height: "6%" },
+  { left: "76%", top: "13%", width: "4.5%", height: "6%" },
+  { left: "86%", top: "13%", width: "4.5%", height: "6%" },
+  { left: "88%", top: "36%", width: "4.5%", height: "10%" },
+  { left: "81%", top: "74%", width: "4.5%", height: "6%" },
+  { left: "92%", top: "89%", width: "5%", height: "8%" },
 ];
 
 function WorkImage({
@@ -159,6 +152,50 @@ function WorkImage({
         className="absolute bottom-[18%] left-[12%] h-px w-[44%] bg-background/45"
       />
     </div>
+  );
+}
+
+function FilledCtaIcon({
+  type,
+}: {
+  type: "work" | "contact" | "essays" | "open" | "close";
+}) {
+  if (type === "work") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 20 20" className="size-4 fill-current">
+        <path d="M10 15.5 3.5 7h13L10 15.5Z" />
+      </svg>
+    );
+  }
+
+  if (type === "contact") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 20 20" className="size-4 fill-current">
+        <path d="M2.5 5.25A2.25 2.25 0 0 1 4.75 3h10.5a2.25 2.25 0 0 1 2.25 2.25v9.5A2.25 2.25 0 0 1 15.25 17H4.75a2.25 2.25 0 0 1-2.25-2.25v-9.5Zm2.34-.1 5.16 4.02 5.16-4.02H4.84Zm10.91 9.7V7.08l-5.29 4.12a.75.75 0 0 1-.92 0L4.25 7.08v7.77h11.5Z" />
+      </svg>
+    );
+  }
+
+  if (type === "open") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 20 20" className="size-4 fill-current">
+        <path d="M10 3.25a.75.75 0 0 1 .75.75v5.25H16a.75.75 0 0 1 0 1.5h-5.25V16a.75.75 0 0 1-1.5 0v-5.25H4a.75.75 0 0 1 0-1.5h5.25V4a.75.75 0 0 1 .75-.75Z" />
+      </svg>
+    );
+  }
+
+  if (type === "close") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 20 20" className="size-4 fill-current">
+        <path d="M4.75 9.25h10.5a.75.75 0 0 1 0 1.5H4.75a.75.75 0 0 1 0-1.5Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 20" className="size-4 fill-current">
+      <path d="M5 2.75A1.75 1.75 0 0 1 6.75 1h6.5A1.75 1.75 0 0 1 15 2.75v14.5a.75.75 0 0 1-1.16.63L10 15.36l-3.84 2.52A.75.75 0 0 1 5 17.25V2.75Z" />
+    </svg>
   );
 }
 
@@ -232,37 +269,40 @@ function HeaderSpread() {
       <div className="relative h-full min-h-screen overflow-hidden">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-1/2 w-[10%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#070807]/45 to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-1/2 w-[9%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#0D1632]/28 to-transparent"
         />
 
         {headerBlocks.map((block) => (
           <span
             key={`${block.left}-${block.top}`}
             aria-hidden="true"
-            className="absolute bg-[#CA4D0B]"
+            className="absolute bg-[#CA4D0B]/70"
             style={block}
           />
         ))}
 
-        <div className="absolute inset-x-6 top-1/2 z-10 max-w-[24rem] -translate-y-1/2 bg-[#192649]/90 px-6 py-7 text-center text-[#E7E2D8] sm:left-[48%] sm:right-auto sm:max-w-[32rem] sm:px-8 sm:py-8 sm:text-left md:left-[54%] lg:max-w-[36rem] lg:px-10 lg:py-10">
+        <div className="absolute inset-x-5 top-1/2 z-10 max-w-[24rem] -translate-y-1/2 bg-[#192649]/94 px-5 py-6 text-center text-[#E7E2D8] sm:inset-x-6 sm:left-[44%] sm:right-auto sm:max-w-[36rem] sm:px-8 sm:py-8 sm:text-left md:left-[48%] lg:max-w-[42rem] lg:px-10 lg:py-10">
           <Link
             href="/"
-            className="block text-[clamp(3.75rem,16vw,5.5rem)] font-bold leading-[0.84] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.75rem,6vw,5.5rem)]"
+            className="block text-balance text-[clamp(2.15rem,10vw,3.55rem)] font-semibold leading-[0.95] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.6rem,4.7vw,4.65rem)] sm:leading-[0.92]"
           >
-            Joseph Mugo
+            Designing the systems through which money, goods, and trust move.
           </Link>
-          <p className="mx-auto mt-5 max-w-[25ch] text-[clamp(1.05rem,4vw,1.3rem)] font-medium leading-7 text-[#C9C4BB] sm:mx-0 sm:text-[clamp(1rem,1.6vw,1.25rem)]">
-            Interfaces, identities, and stories for{" "}
-            <span className="text-[#CA4D0B]">curious</span> minds
+          <p className="mx-auto mt-4 max-w-[36ch] text-balance text-[0.98rem] font-medium leading-7 text-[#D6D0C6] sm:mx-0 sm:mt-5 sm:text-[clamp(1rem,1.45vw,1.18rem)]">
+            What happens when banks stop being places where money is stored, and start
+            becoming the infrastructure through which industries operate?
           </p>
-          <nav className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[0.95rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:justify-start">
-            <a href="#work" className="transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+          <nav className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-[0.86rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:mt-7 sm:justify-start sm:text-[0.9rem]">
+            <a href="#work" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+              <FilledCtaIcon type="work" />
               Work
             </a>
-            <a href="mailto:hello@example.com" className="transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+            <a href="mailto:hello@example.com" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+              <FilledCtaIcon type="contact" />
               Contact
             </a>
-            <a href="#essays" className="transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+            <a href="#essays" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
+              <FilledCtaIcon type="essays" />
               Essays
             </a>
           </nav>
@@ -346,8 +386,9 @@ export function PortfolioPrototype() {
                         setOpenId("");
                         setFlippedCardId("");
                       }}
-                      className="justify-self-start border-t border-[#CA4D0B] pt-3 text-[0.8125rem] font-medium leading-6 text-[#DAD5CA] transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:justify-self-end"
+                      className="inline-flex items-center gap-2 justify-self-start border-t border-[#CA4D0B] pt-3 text-[0.8125rem] font-medium leading-6 text-[#DAD5CA] transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] md:justify-self-end"
                     >
+                      <FilledCtaIcon type="close" />
                       Close
                     </button>
                   </div>
@@ -414,8 +455,11 @@ export function PortfolioPrototype() {
                       setOpenId(project.id);
                       setFlippedCardId("");
                     }}
-                    className="group/image text-left focus-visible:outline-2"
+                    className="group/image relative text-left focus-visible:outline-2"
                   >
+                    <span className="absolute right-3 top-3 z-10 inline-flex size-9 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors group-hover/image:bg-[#192649]">
+                      <FilledCtaIcon type="open" />
+                    </span>
                     <WorkImage
                       color={project.color}
                       title={project.title}
