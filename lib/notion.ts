@@ -2,8 +2,15 @@ import {
   Client,
   collectPaginatedAPI,
   isFullBlock,
+  isFullPage,
   type BlockObjectResponse,
+  type PageObjectResponse,
 } from "@notionhq/client";
+import {
+  getPropertyFiles,
+  getPropertyText,
+  getPropertyTitle,
+} from "@/lib/notion-helpers";
 
 export const notion = new Client({
   auth: process.env.NOTION_API_KEY,
@@ -11,6 +18,19 @@ export const notion = new Client({
 
 export type NotionBlock = BlockObjectResponse & {
   children?: NotionBlock[];
+};
+
+export type PortfolioProjectMedia = {
+  name: string;
+  url: string;
+};
+
+export type PortfolioProject = {
+  id: string;
+  title: string;
+  summary: string;
+  section: string;
+  media: PortfolioProjectMedia[];
 };
 
 type GetBlockChildrenOptions = {
@@ -51,4 +71,39 @@ export async function getPageBlocks(pageId: string): Promise<NotionBlock[]> {
 
 export async function getPageContent(pageId: string): Promise<NotionBlock[]> {
   return getPageBlocks(pageId);
+}
+
+function mapPortfolioPage(page: PageObjectResponse): PortfolioProject | null {
+  const title = getPropertyTitle(page.properties.Name);
+
+  if (!title) {
+    return null;
+  }
+
+  return {
+    id: page.id,
+    title,
+    summary: getPropertyText(page.properties.Slug),
+    section: getPropertyText(page.properties.Section),
+    media: getPropertyFiles(page.properties["Files & media"]),
+  };
+}
+
+export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
+  const dataSourceId =
+    process.env.NOTION_PORTFOLIO_DATA_SOURCE_ID ??
+    process.env.NOTION_PORTFOLIO_DATABASE_ID;
+
+  if (!process.env.NOTION_API_KEY || !dataSourceId) {
+    return [];
+  }
+
+  const pages = await collectPaginatedAPI(notion.dataSources.query, {
+    data_source_id: dataSourceId,
+  });
+
+  return pages
+    .filter(isFullPage)
+    .map(mapPortfolioPage)
+    .filter((project): project is PortfolioProject => project !== null);
 }

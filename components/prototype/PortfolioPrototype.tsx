@@ -2,12 +2,24 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import type { PortfolioProject } from "@/lib/notion";
 
 type ProjectDetail = {
   title: string;
   body: string;
   color?: string;
   label: string;
+  imageUrl?: string;
+  imageFit?: "cover" | "contain";
+};
+
+type LightboxImage = {
+  images: Array<{
+    url: string;
+    title: string;
+    label: string;
+  }>;
+  index: number;
 };
 
 type Project = {
@@ -15,13 +27,16 @@ type Project = {
   title: string;
   company: string;
   description: string;
-  year: string;
-  role: string;
+  year?: string;
+  role?: string;
   color: string;
+  coverImageUrl?: string;
+  coverImageFit?: "cover" | "contain";
   details: ProjectDetail[];
+  showFrameCount?: boolean;
 };
 
-const projects: Project[] = [
+const fallbackProjects: Project[] = [
   {
     id: "designing-for-trust",
     title: "Designing for Trust",
@@ -237,10 +252,14 @@ const projects: Project[] = [
 function WorkImage({
   color,
   title,
+  imageUrl,
+  imageFit = "cover",
   className = "",
 }: {
   color: string;
   title: string;
+  imageUrl?: string;
+  imageFit?: "cover" | "contain";
   className?: string;
 }) {
   return (
@@ -250,14 +269,30 @@ function WorkImage({
       className={`relative overflow-hidden rounded-sm border border-hairline ${className}`}
       style={{ backgroundColor: color }}
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-[12%] top-[18%] h-px bg-background/55"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-[18%] left-[12%] h-px w-[44%] bg-background/45"
-      />
+      {imageUrl ? (
+        // Notion file URLs are temporary and host-dependent, so avoid next/image config friction.
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={imageUrl}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className={`h-full w-full bg-[#E7E2D8] ${
+            imageFit === "contain" ? "object-contain p-3" : "object-cover"
+          }`}
+        />
+      ) : (
+        <>
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-[12%] top-[18%] h-px bg-background/55"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute bottom-[18%] left-[12%] h-px w-[44%] bg-background/45"
+          />
+        </>
+      )}
     </div>
   );
 }
@@ -393,19 +428,34 @@ function FlipCard({
   projectTitle,
   isFlipped,
   onFlip,
+  onOpenImage,
 }: {
   detail: ProjectDetail;
   index: number;
   projectTitle: string;
   isFlipped: boolean;
   onFlip: () => void;
+  onOpenImage: () => void;
 }) {
+  const hasImage = Boolean(detail.imageUrl);
+
   return (
     <button
       type="button"
       aria-pressed={isFlipped}
-      aria-label={`${isFlipped ? "Show image for" : "Read note for"} ${detail.label}`}
-      onClick={onFlip}
+      aria-label={
+        hasImage && !isFlipped
+          ? `View ${detail.label} image`
+          : `${isFlipped ? "Show image for" : "Read note for"} ${detail.label}`
+      }
+      onClick={() => {
+        if (hasImage && !isFlipped) {
+          onOpenImage();
+          return;
+        }
+
+        onFlip();
+      }}
       className="group/card w-[calc(100vw-3rem)] max-w-[46rem] shrink-0 snap-center scroll-mx-6 text-left focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:w-[calc(100vw-5rem)] md:w-[min(72vw,46rem)] md:scroll-mx-10 lg:w-[min(64vw,46rem)]"
     >
       <span className="relative block min-h-[min(34rem,72vh)] rounded-sm transition-transform duration-300 ease-out group-hover/card:-translate-y-0.5 sm:min-h-[min(38rem,74vh)]">
@@ -428,22 +478,39 @@ function FlipCard({
             className="absolute inset-0 overflow-hidden rounded-sm border border-[#FBFAF7]/25"
             style={{ backgroundColor: detail.color }}
           >
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-[10%] top-[14%] h-px bg-background/55"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute bottom-[15%] left-[10%] h-px w-[46%] bg-background/45"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute right-[12%] top-[24%] h-[38%] w-px bg-background/40"
-            />
-            <span className="absolute inset-x-4 bottom-4 flex items-center justify-between border-t border-background/35 pt-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-background/90">
-              <span>{detail.label}</span>
-              <span className="tabular-nums">{String(index + 1).padStart(2, "0")}</span>
-            </span>
+            {detail.imageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={detail.imageUrl}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className={`h-full w-full bg-[#E7E2D8] ${
+                  detail.imageFit === "contain" ? "object-contain p-4" : "object-cover"
+                }`}
+              />
+            ) : (
+              <>
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-[10%] top-[14%] h-px bg-background/55"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-[15%] left-[10%] h-px w-[46%] bg-background/45"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute right-[12%] top-[24%] h-[38%] w-px bg-background/40"
+                />
+              </>
+            )}
+            {detail.imageUrl ? null : (
+              <span className="absolute inset-x-4 bottom-4 flex items-center justify-between border-t border-background/35 pt-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-background/90">
+                <span>{detail.label}</span>
+                <span className="tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+              </span>
+            )}
           </span>
         )}
       </span>
@@ -474,7 +541,8 @@ function HeaderSpread() {
           <p className="mx-auto mt-4 max-w-[42ch] text-balance text-[0.98rem] font-medium leading-7 text-[#D6D0C6] sm:mx-0 sm:mt-5 sm:text-[clamp(1rem,1.45vw,1.18rem)]">
             My work focuses on common problems in banking and financial systems:
             trust, money movement, regulated workflows, internal tools, and connected
-            services.
+            services. I&apos;m especially interested in products that turn complex
+            real-world behavior into simple, trustworthy, adaptive experiences.
           </p>
           <nav className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-[0.86rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:mt-7 sm:justify-start sm:text-[0.9rem]">
             <a href="#work" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
@@ -496,10 +564,112 @@ function HeaderSpread() {
   );
 }
 
-export function PortfolioPrototype() {
+function notionProjectsToPortfolioProjects(notionProjects: PortfolioProject[]): Project[] {
+  const colors = [
+    "oklch(81% 0.05 60)",
+    "oklch(74% 0.07 214)",
+    "oklch(78% 0.04 18)",
+    "oklch(76% 0.05 150)",
+  ];
+
+  return notionProjects.map((project, projectIndex) => {
+    const color = colors[projectIndex % colors.length];
+    const summary =
+      project.summary ||
+      "A portfolio case study from Notion. Add a summary column to control this text.";
+    const section = project.section || "Selected work";
+    const mediaDetails = project.media.map((file, fileIndex) => ({
+      label: file.name || `Frame ${String(fileIndex + 1).padStart(2, "0")}`,
+      title: project.title,
+      body: summary,
+      color,
+      imageUrl: file.url,
+      imageFit: "contain" as const,
+    }));
+
+    return {
+      id: project.id,
+      title: project.title,
+      company: section,
+      description: summary,
+      color,
+      coverImageUrl: project.media[0]?.url,
+      coverImageFit: "contain",
+      showFrameCount: false,
+      details:
+        mediaDetails.length > 0
+          ? mediaDetails
+          : [
+              {
+                label: section,
+                title: project.title,
+                body: summary,
+                color,
+              },
+            ],
+    };
+  });
+}
+
+type PortfolioPrototypeProps = {
+  notionProjects?: PortfolioProject[];
+};
+
+export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypeProps) {
+  const projects =
+    notionProjects.length > 0
+      ? notionProjectsToPortfolioProjects(notionProjects)
+      : fallbackProjects;
   const [openId, setOpenId] = useState<string>(projects[0].id);
   const [flippedCardId, setFlippedCardId] = useState<string>("");
+  const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
   const projectRefs = useRef<Record<string, HTMLElement | null>>({});
+  const currentLightboxImage = lightboxImage?.images[lightboxImage.index] ?? null;
+
+  function moveLightbox(direction: -1 | 1) {
+    setLightboxImage((current) => {
+      if (!current || current.images.length < 2) {
+        return current;
+      }
+
+      return {
+        ...current,
+        index:
+          (current.index + direction + current.images.length) %
+          current.images.length,
+      };
+    });
+  }
+
+  useEffect(() => {
+    if (!lightboxImage) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setLightboxImage(null);
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        moveLightbox(-1);
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        moveLightbox(1);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [lightboxImage]);
 
   useEffect(() => {
     const projectElement = projectRefs.current[openId];
@@ -511,13 +681,87 @@ export function PortfolioPrototype() {
     requestAnimationFrame(() => {
       projectElement.scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
+        block: "start",
       });
     });
   }, [openId]);
 
   return (
     <main className="w-full">
+      {lightboxImage && currentLightboxImage ? (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${currentLightboxImage.label} image preview`}
+          className="fixed inset-0 z-50 bg-[#192649]/96 p-4 text-[#FBFAF7] sm:p-6"
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxImage(null)}
+            className="absolute right-4 top-4 z-20 inline-flex size-12 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors hover:bg-[#FBFAF7] hover:text-[#192649] focus-visible:outline-2 focus-visible:outline-[#FBFAF7] sm:right-6 sm:top-6"
+            aria-label="Close image preview"
+          >
+            <FilledCtaIcon type="close" />
+          </button>
+
+          {lightboxImage.images.length > 1 ? (
+            <div
+              className="absolute inset-x-4 bottom-4 z-20 h-1 bg-[#FBFAF7]/18 sm:inset-x-6 sm:bottom-6"
+              role="progressbar"
+              aria-label="Image preview progress"
+              aria-valuemin={1}
+              aria-valuemax={lightboxImage.images.length}
+              aria-valuenow={lightboxImage.index + 1}
+            >
+              <div
+                className="h-full bg-[#CA4D0B] transition-[width] duration-300 ease-out"
+                style={{
+                  width: `${
+                    ((lightboxImage.index + 1) / lightboxImage.images.length) * 100
+                  }%`,
+                }}
+              />
+            </div>
+          ) : null}
+
+          <div className="relative h-full">
+            {lightboxImage.images.length > 1 ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => moveLightbox(-1)}
+                  className="absolute left-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors hover:bg-[#FBFAF7] hover:text-[#192649] focus-visible:outline-2 focus-visible:outline-[#FBFAF7]"
+                  aria-label="View previous image"
+                >
+                  <span aria-hidden="true" className="text-2xl leading-none">
+                    &lsaquo;
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveLightbox(1)}
+                  className="absolute right-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors hover:bg-[#FBFAF7] hover:text-[#192649] focus-visible:outline-2 focus-visible:outline-[#FBFAF7]"
+                  aria-label="View next image"
+                >
+                  <span aria-hidden="true" className="text-2xl leading-none">
+                    &rsaquo;
+                  </span>
+                </button>
+              </>
+            ) : null}
+            {/* Notion file URLs are temporary and host-dependent, so avoid next/image config friction. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={currentLightboxImage.url}
+              alt=""
+              loading="eager"
+              decoding="async"
+              className="h-full w-full object-contain px-0 sm:px-14"
+            />
+          </div>
+        </div>
+      ) : null}
+
       <header className="min-h-screen">
         <div className="flex min-h-screen flex-col">
           <div className="flex flex-1">
@@ -563,18 +807,22 @@ export function PortfolioPrototype() {
                       {String(index + 1).padStart(2, "0")}
                     </p>
 
-                    <div className="max-w-[46rem] space-y-5">
-                      <h2 className="max-w-[16ch] text-balance text-[clamp(2.15rem,5vw,4.4rem)] font-medium leading-[0.9] text-foreground">
+                    <div className="grid max-w-[72rem] gap-5 lg:grid-cols-[minmax(20rem,0.95fr)_minmax(22rem,0.75fr)] lg:items-start lg:gap-10">
+                      <h2 className="max-w-[15ch] text-balance text-[clamp(2.15rem,5vw,4.4rem)] font-medium leading-[0.9] text-foreground">
                         {project.title}
                       </h2>
-                      <p className="max-w-[42ch] text-[1.08rem] leading-8 text-muted">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
-                        <span>{project.company}</span>
-                        <span>{project.year}</span>
-                        <span>{project.role}</span>
-                        <span>{project.details.length} frames</span>
+                      <div className="space-y-5">
+                        <p className="max-w-[56ch] text-[1.03rem] leading-8 text-muted">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
+                          <span>{project.company}</span>
+                          {project.year ? <span>{project.year}</span> : null}
+                          {project.role ? <span>{project.role}</span> : null}
+                          {project.showFrameCount === false ? null : (
+                            <span>{project.details.length} frames</span>
+                          )}
+                        </div>
                       </div>
                     </div>
 
@@ -608,13 +856,39 @@ export function PortfolioPrototype() {
                           onFlip={() => {
                             setFlippedCardId(flippedCardId === cardId ? "" : cardId);
                           }}
+                          onOpenImage={() => {
+                            if (!detail.imageUrl) {
+                              return;
+                            }
+
+                            const lightboxImages = project.details
+                              .filter(
+                                (
+                                  projectDetail,
+                                ): projectDetail is ProjectDetail & { imageUrl: string } =>
+                                  Boolean(projectDetail.imageUrl),
+                              )
+                              .map((projectDetail) => ({
+                                url: projectDetail.imageUrl,
+                                title: project.title,
+                                label: projectDetail.label,
+                              }));
+                            const imageIndex = lightboxImages.findIndex(
+                              (image) => image.url === detail.imageUrl,
+                            );
+
+                            setLightboxImage({
+                              images: lightboxImages,
+                              index: Math.max(imageIndex, 0),
+                            });
+                          }}
                         />
                       );
                     })}
                   </div>
                 </div>
               ) : (
-                <div className="grid gap-6 md:grid-cols-[4rem_minmax(0,1fr)_minmax(14rem,22rem)] md:items-start">
+                <div className="grid gap-6 md:grid-cols-[4rem_minmax(0,1fr)_minmax(22rem,34rem)] md:items-start lg:gap-10">
                   <p className="text-sm font-medium leading-6 tabular-nums text-subtle">
                     {String(index + 1).padStart(2, "0")}
                   </p>
@@ -640,8 +914,8 @@ export function PortfolioPrototype() {
 
                     <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
                       <span>{project.company}</span>
-                      <span>{project.year}</span>
-                      <span>{project.role}</span>
+                      {project.year ? <span>{project.year}</span> : null}
+                      {project.role ? <span>{project.role}</span> : null}
                     </div>
                   </div>
 
@@ -661,7 +935,9 @@ export function PortfolioPrototype() {
                     <WorkImage
                       color={project.color}
                       title={project.title}
-                      className="aspect-[4/3] w-full transition-transform duration-300 group-hover/image:-translate-y-0.5"
+                      imageUrl={project.coverImageUrl}
+                      imageFit={project.coverImageFit}
+                      className="aspect-[16/11] w-full transition-transform duration-300 group-hover/image:-translate-y-0.5"
                     />
                   </button>
                 </div>

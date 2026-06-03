@@ -18,7 +18,23 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Notion Portfolio CMS
+
+The homepage can read portfolio entries from a Notion data source. Add these environment variables to `.env.local`:
+
+```bash
+NOTION_API_KEY=your_notion_integration_secret
+NOTION_PORTFOLIO_DATA_SOURCE_ID=your_portfolio_data_source_id
+```
+
+Expected Notion properties:
+
+- `Name`: title
+- `Slug`: currently displayed as the project summary
+- `Files & media`: cover and horizontal card images
+- `Section`: project grouping, such as `Designing for Trust`
+
+If the Notion data source is not configured or cannot be loaded, the homepage uses the local fallback project list.
 
 ## Learn More
 
