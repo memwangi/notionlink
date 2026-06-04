@@ -21,6 +21,7 @@
   --color-accent: var(--accent);
   --color-primary: var(--primary);
   --font-sans: var(--font-plus-jakarta-sans), "Arial", "Helvetica Neue", sans-serif;
+  --font-display: var(--font-nohemi-display), var(--font-plus-jakarta-sans), "Arial", sans-serif;
   --font-mono: "Courier New", Courier, monospace;
 }
 
@@ -37,6 +38,10 @@ body {
   font-size: 1rem;
   line-height: 1.625;
   font-variant-ligatures: common-ligatures contextual;
+}
+
+.font-display {
+  font-family: var(--font-nohemi-display), var(--font-plus-jakarta-sans), "Arial", sans-serif !important;
 }
 
 a,

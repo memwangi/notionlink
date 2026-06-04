@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Marcellus, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -8,11 +9,31 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const marcellus = Marcellus({
-  variable: "--font-signature",
-  subsets: ["latin"],
-  weight: "400",
+const nohemi = localFont({
+  variable: "--font-nohemi-display",
   display: "swap",
+  src: [
+    {
+      path: "../public/nohemi-font-family/Nohemi-Regular-BF6438cc579d934.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/nohemi-font-family/Nohemi-Medium-BF6438cc57ddecd.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/nohemi-font-family/Nohemi-SemiBold-BF6438cc57db2ff.woff",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/nohemi-font-family/Nohemi-Bold-BF6438cc577b524.woff",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${marcellus.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${nohemi.variable} h-full antialiased`}
     >
       <body className={`${plusJakartaSans.className} min-h-full flex flex-col`}>
         {children}

@@ -465,7 +465,7 @@ function FlipCard({
               <span className="block text-[0.8125rem] font-medium leading-6 text-[#706A62]">
                 {projectTitle}
               </span>
-              <span className="block max-w-[13ch] text-balance text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[0.98]">
+              <span className="block max-w-[14ch] text-balance font-display text-[clamp(1.7rem,3.2vw,2.65rem)] font-semibold leading-[1]">
                 {detail.title}
               </span>
             </span>
@@ -534,15 +534,13 @@ function HeaderSpread() {
           </p>
           <Link
             href="/"
-            className="block text-balance text-[clamp(2.15rem,10vw,3.55rem)] font-semibold leading-[0.95] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.6rem,4.7vw,4.65rem)] sm:leading-[0.92]"
+            className="block text-balance font-display text-[clamp(1.95rem,8.5vw,3.1rem)] font-semibold leading-[0.98] transition-colors hover:text-[#CA4D0B] focus-visible:outline-2 focus-visible:outline-[#CA4D0B] sm:text-[clamp(2.25rem,3.8vw,3.9rem)] sm:leading-[0.96]"
           >
-            I design financial systems that help money, goods, and trust move clearly.
+            I design products for everyday finance.
           </Link>
           <p className="mx-auto mt-4 max-w-[42ch] text-balance text-[0.98rem] font-medium leading-7 text-[#D6D0C6] sm:mx-0 sm:mt-5 sm:text-[clamp(1rem,1.45vw,1.18rem)]">
-            My work focuses on common problems in banking and financial systems:
-            trust, money movement, regulated workflows, internal tools, and connected
-            services. I&apos;m especially interested in products that turn complex
-            real-world behavior into simple, trustworthy, adaptive experiences.
+            Digital systems that help people and teams pay, save, borrow, trade,
+            manage money, and make better financial decisions.
           </p>
           <nav className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-3 text-[0.86rem] font-semibold uppercase leading-6 text-[#CA4D0B] sm:mt-7 sm:justify-start sm:text-[0.9rem]">
             <a href="#work" className="inline-flex items-center gap-2 transition-colors hover:text-[#FBFAF7] focus-visible:outline-2 focus-visible:outline-[#CA4D0B]">
@@ -693,12 +691,12 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
           role="dialog"
           aria-modal="true"
           aria-label={`${currentLightboxImage.label} image preview`}
-          className="fixed inset-0 z-50 bg-[#192649]/96 p-4 text-[#FBFAF7] sm:p-6"
+          className="fixed inset-0 z-50 bg-[#FBFAF7]/96 p-4 text-[#192649] sm:p-6"
         >
           <button
             type="button"
             onClick={() => setLightboxImage(null)}
-            className="absolute right-4 top-4 z-20 inline-flex size-12 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors hover:bg-[#FBFAF7] hover:text-[#192649] focus-visible:outline-2 focus-visible:outline-[#FBFAF7] sm:right-6 sm:top-6"
+            className="absolute right-4 top-4 z-20 inline-flex size-12 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] shadow-[0_18px_42px_rgba(25,38,73,0.18)] transition-colors hover:bg-[#192649] focus-visible:outline-2 focus-visible:outline-[#192649] sm:right-6 sm:top-6"
             aria-label="Close image preview"
           >
             <FilledCtaIcon type="close" />
@@ -706,7 +704,7 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
 
           {lightboxImage.images.length > 1 ? (
             <div
-              className="absolute inset-x-4 bottom-4 z-20 h-1 bg-[#FBFAF7]/18 sm:inset-x-6 sm:bottom-6"
+              className="absolute inset-x-4 bottom-4 z-20 h-1 bg-[#192649]/14 sm:inset-x-6 sm:bottom-6"
               role="progressbar"
               aria-label="Image preview progress"
               aria-valuemin={1}
@@ -724,13 +722,13 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
             </div>
           ) : null}
 
-          <div className="relative h-full">
+          <div className="relative flex h-full items-center justify-center">
             {lightboxImage.images.length > 1 ? (
               <>
                 <button
                   type="button"
                   onClick={() => moveLightbox(-1)}
-                  className="absolute left-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors hover:bg-[#FBFAF7] hover:text-[#192649] focus-visible:outline-2 focus-visible:outline-[#FBFAF7]"
+                  className="absolute left-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] shadow-[0_18px_42px_rgba(25,38,73,0.18)] transition-colors hover:bg-[#192649] focus-visible:outline-2 focus-visible:outline-[#192649]"
                   aria-label="View previous image"
                 >
                   <span aria-hidden="true" className="text-2xl leading-none">
@@ -740,7 +738,7 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
                 <button
                   type="button"
                   onClick={() => moveLightbox(1)}
-                  className="absolute right-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] transition-colors hover:bg-[#FBFAF7] hover:text-[#192649] focus-visible:outline-2 focus-visible:outline-[#FBFAF7]"
+                  className="absolute right-0 top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#CA4D0B] text-[#FBFAF7] shadow-[0_18px_42px_rgba(25,38,73,0.18)] transition-colors hover:bg-[#192649] focus-visible:outline-2 focus-visible:outline-[#192649]"
                   aria-label="View next image"
                 >
                   <span aria-hidden="true" className="text-2xl leading-none">
@@ -756,7 +754,7 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
               alt=""
               loading="eager"
               decoding="async"
-              className="h-full w-full object-contain px-0 sm:px-14"
+              className="max-h-[calc(100vh-5rem)] w-auto max-w-[calc(100vw-2rem)] bg-white object-contain shadow-[0_28px_80px_rgba(25,38,73,0.22)] sm:max-w-[calc(100vw-8rem)]"
             />
           </div>
         </div>
@@ -780,11 +778,14 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
             Focus
           </p>
           <div className="max-w-[48rem] space-y-4">
-            <h1 className="text-balance text-[clamp(2.2rem,5vw,4.6rem)] font-medium leading-[0.92] text-foreground">
+            <h1 className="text-balance font-display text-[clamp(1.95rem,4vw,3.65rem)] font-semibold leading-[0.96] text-foreground">
               Work
             </h1>
-            <p className="max-w-[46ch] text-[1.08rem] leading-8 text-muted">
-              Here are the kinds of problems I&apos;ve solved in my recent work.
+            <p className="max-w-[62ch] text-[1.08rem] leading-8 text-muted">
+              My work spans the core systems of everyday finance: payments and
+              collections, savings platforms, customer onboarding and KYC, credit
+              origination, trade finance, settlement workflows, transaction
+              monitoring, personal finance, and internal operations tools.
             </p>
           </div>
         </div>
@@ -808,15 +809,19 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
                     </p>
 
                     <div className="grid max-w-[72rem] gap-5 lg:grid-cols-[minmax(20rem,0.95fr)_minmax(22rem,0.75fr)] lg:items-start lg:gap-10">
-                      <h2 className="max-w-[15ch] text-balance text-[clamp(2.15rem,5vw,4.4rem)] font-medium leading-[0.9] text-foreground">
-                        {project.title}
-                      </h2>
+                      <div className="space-y-4">
+                        <p className="text-[0.8125rem] font-semibold uppercase leading-6 tracking-[0.08em] text-subtle">
+                          {project.company}
+                        </p>
+                        <h2 className="max-w-[20ch] text-balance font-display text-[clamp(1.65rem,3vw,2.75rem)] font-semibold leading-[1] text-foreground">
+                          {project.title}
+                        </h2>
+                      </div>
                       <div className="space-y-5">
                         <p className="max-w-[56ch] text-[1.03rem] leading-8 text-muted">
                           {project.description}
                         </p>
                         <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
-                          <span>{project.company}</span>
                           {project.year ? <span>{project.year}</span> : null}
                           {project.role ? <span>{project.role}</span> : null}
                           {project.showFrameCount === false ? null : (
@@ -903,7 +908,10 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
                       }}
                       className="block text-left focus-visible:outline-2"
                     >
-                      <h2 className="max-w-[12ch] text-balance text-[clamp(2.1rem,5vw,4.5rem)] font-medium leading-[0.92] text-foreground">
+                      <span className="mb-3 block text-[0.8125rem] font-semibold uppercase leading-6 tracking-[0.08em] text-subtle">
+                        {project.company}
+                      </span>
+                      <h2 className="max-w-[20ch] text-balance font-display text-[clamp(1.55rem,2.9vw,2.6rem)] font-semibold leading-[1.04] text-foreground">
                         {project.title}
                       </h2>
                     </button>
@@ -913,7 +921,6 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
                     </p>
 
                     <div className="flex flex-wrap gap-x-5 gap-y-1 text-[0.8125rem] font-medium leading-6 text-subtle">
-                      <span>{project.company}</span>
                       {project.year ? <span>{project.year}</span> : null}
                       {project.role ? <span>{project.role}</span> : null}
                     </div>
