@@ -29,6 +29,7 @@ type Project = {
   description: string;
   year?: string;
   role?: string;
+  timeline?: string;
   color: string;
   coverImageUrl?: string;
   coverImageFit?: "cover" | "contain";
@@ -590,6 +591,7 @@ function notionProjectsToPortfolioProjects(notionProjects: PortfolioProject[]): 
       title: project.title,
       company: section,
       description: summary,
+      timeline: project.year,
       color,
       coverImageUrl: project.media[0]?.url,
       coverImageFit: "contain",
@@ -773,11 +775,8 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
         className="mx-auto w-full max-w-[78rem] space-y-3 px-6 py-14 sm:px-10 lg:py-20"
         aria-label="Problem areas"
       >
-        <div className="grid gap-5 border-b border-hairline pb-10 md:grid-cols-[4rem_minmax(0,1fr)]">
-          <p className="border-t border-[#CA4D0B] pt-3 text-sm font-medium leading-6 text-muted">
-            Focus
-          </p>
-          <div className="max-w-[48rem] space-y-4">
+        <div className="border-b border-hairline pb-10">
+          <div className="max-w-[64rem] space-y-4">
             <h1 className="text-balance font-display text-[clamp(1.95rem,4vw,3.65rem)] font-semibold leading-[0.96] text-foreground">
               Work
             </h1>
@@ -805,7 +804,7 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
                 <div className="animate-[dock-in_360ms_cubic-bezier(0.22,1,0.36,1)] py-2 sm:py-4">
                   <div className="mb-10 grid gap-6 md:grid-cols-[4rem_minmax(0,1fr)_auto] md:items-start">
                     <p className="border-t border-[#CA4D0B] pt-3 text-sm font-medium leading-6 tabular-nums text-muted">
-                      {String(index + 1).padStart(2, "0")}
+                      {project.timeline || String(index + 1).padStart(2, "0")}
                     </p>
 
                     <div className="grid max-w-[72rem] gap-5 lg:grid-cols-[minmax(20rem,0.95fr)_minmax(22rem,0.75fr)] lg:items-start lg:gap-10">
@@ -895,7 +894,7 @@ export function PortfolioPrototype({ notionProjects = [] }: PortfolioPrototypePr
               ) : (
                 <div className="grid gap-6 md:grid-cols-[4rem_minmax(0,1fr)_minmax(22rem,34rem)] md:items-start lg:gap-10">
                   <p className="text-sm font-medium leading-6 tabular-nums text-subtle">
-                    {String(index + 1).padStart(2, "0")}
+                    {project.timeline || String(index + 1).padStart(2, "0")}
                   </p>
 
                   <div className="max-w-[42rem] space-y-4">

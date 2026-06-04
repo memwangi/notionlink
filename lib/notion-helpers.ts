@@ -48,6 +48,20 @@ export function getPropertyText(property: NotionProperty | undefined) {
     return property.url ?? "";
   }
 
+  if (property.type === "number") {
+    return property.number?.toString() ?? "";
+  }
+
+  if (property.type === "date") {
+    if (!property.date) {
+      return "";
+    }
+
+    return property.date.end
+      ? `${property.date.start} - ${property.date.end}`
+      : property.date.start;
+  }
+
   return "";
 }
 

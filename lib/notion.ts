@@ -30,6 +30,7 @@ export type PortfolioProject = {
   title: string;
   summary: string;
   section: string;
+  year: string;
   media: PortfolioProjectMedia[];
 };
 
@@ -85,6 +86,10 @@ function mapPortfolioPage(page: PageObjectResponse): PortfolioProject | null {
     title,
     summary: getPropertyText(page.properties.Slug),
     section: getPropertyText(page.properties.Section),
+    year:
+      getPropertyText(page.properties.Year) ||
+      getPropertyText(page.properties.Time) ||
+      getPropertyText(page.properties.Period),
     media: getPropertyFiles(page.properties["Files & media"]),
   };
 }
@@ -100,10 +105,26 @@ export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
 
   const pages = await collectPaginatedAPI(notion.dataSources.query, {
     data_source_id: dataSourceId,
+    sorts: [
+      {
+        property: "Year",
+        direction: "descending",
+      },
+    ],
   });
 
   return pages
     .filter(isFullPage)
     .map(mapPortfolioPage)
-    .filter((project): project is PortfolioProject => project !== null);
+    .filter((project): project is PortfolioProject => project !== null)
+    .sort((firstProject, secondProject) => {
+      const firstYear = Number.parseInt(firstProject.year, 10);
+      const secondYear = Number.parseInt(secondProject.year, 10);
+
+      if (Number.isNaN(firstYear) || Number.isNaN(secondYear)) {
+        return 0;
+      }
+
+      return secondYear - firstYear;
+    });
 }
