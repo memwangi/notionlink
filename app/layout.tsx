@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+const urbanist = Urbanist({
+  variable: "--font-urbanist",
   subsets: ["latin"],
   display: "swap",
 });
@@ -50,11 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${nohemi.variable} h-full antialiased`}
+      className={`${urbanist.variable} ${nohemi.variable} h-full antialiased`}
     >
-      <body className={`${plusJakartaSans.className} min-h-full flex flex-col`}>
-        {children}
-      </body>
+      <body className={`${urbanist.className} min-h-full flex flex-col`}>{children}</body>
     </html>
   );
 }

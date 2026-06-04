@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Nohemi Display";
+  src: url("/nohemi-font-family/Nohemi-Regular-BF6438cc579d934.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi Display";
+  src: url("/nohemi-font-family/Nohemi-SemiBold-BF6438cc57db2ff.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nohemi Display";
+  src: url("/nohemi-font-family/Nohemi-Bold-BF6438cc577b524.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #fbfaf7;
   --foreground: #28231f;
@@ -20,8 +44,8 @@
   --color-surface: var(--surface);
   --color-accent: var(--accent);
   --color-primary: var(--primary);
-  --font-sans: var(--font-plus-jakarta-sans), "Arial", "Helvetica Neue", sans-serif;
-  --font-display: var(--font-nohemi-display), var(--font-plus-jakarta-sans), "Arial", sans-serif;
+  --font-sans: var(--font-urbanist), "Arial", "Helvetica Neue", sans-serif;
+  --font-display: "Nohemi Display", var(--font-nohemi-display), var(--font-urbanist), "Arial", sans-serif;
   --font-mono: "Courier New", Courier, monospace;
 }
 
@@ -29,19 +53,20 @@ html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-plus-jakarta-sans), "Arial", "Helvetica Neue", sans-serif;
+  font-family: var(--font-urbanist), "Arial", "Helvetica Neue", sans-serif;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
 }
 
 body {
   font-size: 1rem;
+  font-weight: 500;
   line-height: 1.625;
   font-variant-ligatures: common-ligatures contextual;
 }
 
 .font-display {
-  font-family: var(--font-nohemi-display), var(--font-plus-jakarta-sans), "Arial", sans-serif !important;
+  font-family: "Nohemi Display", var(--font-nohemi-display), var(--font-urbanist), "Arial", sans-serif !important;
 }
 
 a,
